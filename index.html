@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random ORG</title>
+    <style>
+        body {
+            font-family: Courier;
+            background-image: url('back.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            color: white;
+        }
+
+        .button {
+            background-color: #d7bae4; /* Green */
+            border: none;
+            color: white;
+            padding: 5px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            
+            
+            }
+
+        .button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            padding: 15px 20px;
+            font-size: 20px;
+            }
+
+        #randNameB {
+            margin-left: 176px;
+        }
+        
+        #checkLimpar {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 5px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        #checkLimpar:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        input[type=text] {
+            border: 2px solid #e9c3eb;
+            background-color: #d7bae4;
+            border-radius: 4px;
+            transition-duration: 0.4s;
+        }
+
+        input[type=text]:hover {
+            background-color: white;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+            
+        }
+
+        input[type=number] {
+            border: 2px solid #e9c3eb;
+            background-color: #d7bae4;
+            border-radius: 4px;
+            transition-duration: 0.4s;
+        }
+
+        input[type=number]:hover {
+            background-color: white;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        #texto {
+            transition-duration: 0.4s;
+        }
+
+        #texto:hover {
+            color: rgb(120, 122, 236);
+        }
+
+        .texto1 {
+            font-size: 20px;
+        }
+
+        #rand {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="numRandom">
+        <h1 id="texto">Gerador de números aleatórios</h1>
+        <center>
+        <input type="number" id="INPUTmin" placeholder="Mínimo"><br>
+        <br>
+        <input type="number" id="INPUTmax" placeholder="Máximo"><br>
+        <br>
+        </center>
+        <button onclick="rand()" class="button">Randomizar</button>
+        <p id="rand"></p>
+        
+    </div>
+
+    <div class="nomeRandom">
+        <h2 id="texto">Roleta de nomes</h2>
+        <center>
+            <label for="nome">Adicionar um nome:</label>
+            <input type="text" id="nomeIn">
+            <button onclick="chars()" class="button">Salvar</button>
+            <button onclick="limpar()" class="button">Limpar</button>
+            <input type="checkbox" id="checkLimpar">Limpar Tudo</input>
+            <br>
+            <button onclick="randName()" class="button" id="randNameB">Randomizar</button>
+            <p id="lista"></p>
+            <p id="randName"></p>
+        </center>
+    </div>
+    
+    <div class="wordRandom">
+        <h3 id="texto">Palavras Aleatórias</h3>
+        <center>
+            <button onclick="palavraRandom()" class="button">Gerar</button>
+            <p id="palavraAleatoria" class="texto1"></p>
+        </center>
+    </div>
+
+    <script>
+        function palavraRandom() {
+            const palavras = ['peixe', 'mar', 'bola', 'prego', 'martelo', 'televisão',
+                              'videogame', 'piscina', 'matemática', 'computador', 'menina',
+                              'menino', 'pai', 'carro', 'basquete', 'skate', 'gato', 'cachorro',
+                              'começo', 'moto', 'penteado', 'trigo', 'laser', 'bermuda', 'gay',
+                              'Sou o JOAO E SOU GOSTOSAO', 'comida', 'japonês', 'palavra', 'papo',
+                              'garoto', 'urso', 'pinto', 'computação', 'faculdade', 'marca', 'tristeza',
+                              'felicidade', 'seriado', 'metanfetamina', 'bebida', 'água']
+            
+            rand = Math.floor(Math.random()*palavras.length);
+            document.getElementById("palavraAleatoria").innerText = palavras[rand];
+        }
+
+        function rand(min, max) {
+            min = INPUTmin.value
+            max = INPUTmax.value
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            if (INPUTmin.value.length == 0){
+                console.log('f')
+            }
+
+            else if (INPUTmax.value.length == 0){
+                console.log('f')
+            }
+
+            else {
+                document.getElementById("rand").innerText = Math.floor(Math.random() * (max - min)) + min;
+            }
+        }
+
+        var names = []
+        function chars() {
+            if (nomeIn.value.length == 0) {
+                console.log('f')
+            }
+            
+            else {
+                names.push(nomeIn.value)
+            }
+            document.getElementById("lista").innerText = names.join(', ')
+            document.getElementById("nomeIn").value = ''
+            
+        }
+
+        function limpar() {
+            if (document.getElementById("checkLimpar").checked) {
+                names.length = 0
+            }
+            else {
+                if (names.length > 1) {
+                    names.pop()
+                }
+
+                else {
+                    names.length = 0
+                }
+            }
+            document.getElementById("lista").innerText = names
+        }
+
+        function randName() {
+            var randomNumber = Math.floor(Math.random()*names.length);
+            document.getElementById("randName").innerText = names[randomNumber]
+        }
+
+     
+        
+    </script>
+</body>
+</html>
