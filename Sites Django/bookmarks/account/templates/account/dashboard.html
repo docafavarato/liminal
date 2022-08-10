@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Painel de controle{% endblock %}
+
+{% block content %}
+    <h1>Painel de controle</h1>
+    {% with total_images_created=request.user.images_created.count %}
+        <p>Bem vindo ao seu painel de controle. Você salvou {{ total_images_created }} imagens.</p>
+    {% endwith %}
+
+    <p>Arraste esse botão para salvar imagens de outros sites ➔ <a href="javascript:{% include "bookmarklet_launcher.js" %}" class="button">Salvar</a></p>
+
+    <p>Você também pode <a href="{% url "edit" %}">editar o seu perfil</a> ou <a href="{% url "password_change" %}">mudar a sua senha</a>.</p>
+{% endblock %}
+

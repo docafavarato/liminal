@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@100&family=Righteous&display=swap');
+
+body {
+    background-color: rgb(228, 228, 228);
+}
+
+.header {
+    margin-left: -10px;
+    margin-top: -10px;
+    border-style: solid;
+    border-color: rgb(68, 64, 64);
+    background-color: rgb(68, 64, 64);
+    width: 100%;
+    border-width: 10px;
+}
+
+.skills {
+    margin-top: 50px;
+    margin-left: 180px;
+}
+
+img {
+    margin-top: -100px;
+    margin-left: 700px;
+    border-radius: 500px;
+}
+
+#name {
+    margin-left: 180px;
+    font-family: 'Poppins';
+    background-color: rgb(68, 64, 64);
+    color: white;
+}
+
+#foto {
+    margin-left: 500px;
+    border-radius: 200px;
+}
+
+.info {
+    font-family: 'Poppins';
+    margin-left: 780px;
+}
+
+.obj {
+    font-family: Poppins;
+}
+
+.objt {
+    font-size: 18px;
+    font-family: 'Montserrat';
+}
+
+
+#hr1 {
+    margin-left: 780px;
+    margin-top: -920px;
+}
+
+#hr2 {
+    margin-left: 780px;
+    margin-top: 220px;
+}
+
+
+#sobrel {
+    margin-left: 180px;
+    margin-top: -550px;
+}
+
+#sobrel2 {
+    margin-left: 180px;
+}
+
+#python {
+    border-style: none;
+    color: rgb(68, 64, 64);
+    background-color: rgb(68, 64, 64);
+    width: 10%;
+    transition-duration: 12000s;
+}
+
+#python:after {
+    content: '70%';
+}
+
+#python:hover {
+    transition-duration: 0.7s;
+    border-style: none;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #2dc07c;
+    color: white;
+    width: 30%;
+}
+
+#sql {
+    color: rgb(68, 64, 64);
+    background-color: rgb(68, 64, 64);
+    border-style: none;
+    width: 10%;
+    transition-duration: 12000s;
+}
+
+#sql:after {
+    content: '50%';
+}
+
+#sql:hover {
+    transition-duration: 0.7s;
+    border-style: none;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #49c4da;
+    color: white;
+    width: 25%;
+}
+
+#javascript {
+    border-style: none;
+    color: rgb(68, 64, 64);
+    background-color: rgb(68, 64, 64);
+    width: 10%;
+    transition-duration: 12000s;
+}
+
+#javascript:after {
+    content: '40%';
+}
+
+#javascript:hover {
+    transition-duration: 0.7s;
+    border-style: none;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #F7E018;
+    color: white;
+    width: 20%;
+}
+
+#html {
+    border-style: none;
+    width: 10%;
+    transition-duration: 12000s;
+    color: rgb(68, 64, 64);
+    background-color: rgb(68, 64, 64);
+}
+
+#html:after {
+    content: '40%';
+}
+
+#html:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #FF4C15;
+    transition-duration: 0.7s;
+    border-style: none;
+    color: white;
+    width: 20%;
+}
+
+#css {
+    border-style: none;
+    color: rgb(68, 64, 64);
+    background-color: rgb(68, 64, 64);
+    width: 10%;
+    transition-duration: 12000s;
+}
+
+#css:after {
+    content: '30%';
+}
+
+#css:hover {
+    transition-duration: 0.7s;
+    border-style: none;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #0076BE;
+    color: white;
+    width: 15%;
+}
+
+#git {
+    margin-left: 180px;
+    text-decoration: none;
+}
+
+#g {
+    text-decoration: none;
+}
+
+#l {
+    text-decoration: none;
+}
+
+#i {
+    text-decoration: none;
+}
+
+#link {
+    margin-left: 180px;
+    text-decoration: none;
+}
+
+#insta {
+    margin-left: 180px;
+    text-decoration: none;
+}
+

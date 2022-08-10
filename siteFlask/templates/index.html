@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial';
+            background-color: rgb(147, 185, 221);
+            text-align: center;
+            color: white;
+        }
+
+        input[type=text] {
+            border-style: none;
+            padding: 10px;
+            border-radius: 5px;
+            transition-duration: 0.4s;
+        }
+
+        input[type=text]:hover {
+            border-style: none;
+            background-color: rgb(255, 255, 255);
+        }
+
+        input[type=submit] {
+            border-style: none;
+            padding: 10px;
+            border-radius: 10px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            border-style: none;
+            background-color: rgb(255, 255, 255);
+        }
+
+    </style>
+    <script>
+        
+    </script>
+    <title>CEP</title>
+</head>
+<body>
+    <form method="POST">
+        <input name="text" type="text">
+        <input type="submit">
+    </form>
+    <h1 id="cep">CEP: {{ cep }}</h1>
+    <h1 id="end">Endereço: {{ address }}</h1>
+    <h1 id="est">Estado: {{ state }}</h1>
+    <h1 id="bar">Bairro: {{ district }}</h1>
+    <center>
+    <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q={{ address }}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://fmovies-online.net">fmovies</a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">google maps code</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div>
+    <center>
+</body>
+</html>

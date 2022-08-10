@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <h1>Login</h1>
+    {% if form.errors %}
+        <p>
+            Seu nome de usuário e a senha estão incorretos.
+            Tente novamente.
+        </p>
+    {% else %}
+        <p>Por favor, utilize este formulário para realizar o login. Se você não possue uma conta, se registre <a href="{% url "register" %}">aqui</a>.</p>
+    {% endif %}
+    <div class="login-form">
+            <form action="{% url 'login' %}" method="post">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+                <p><input type="submit" value="Login"></p>
+            </form>
+            <p><a href="{% url "password_reset" %}">Esqueceu sua senha?</a></p>
+    </div>
+
+    <div class="social">
+        <ul>
+            <li class="facebook">
+                <a href="{% url "social:begin" "facebook" %}">Logar com Facebook</a>
+            </li>
+
+            <li class="google">
+                <a href="{% url "social:begin" "google-oauth2" %}">Logar com Google</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

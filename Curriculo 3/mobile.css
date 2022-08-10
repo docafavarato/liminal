@@ -1,0 +1,53 @@
+@media screen and (max-width: 481px){
+
+    .topnav {
+        margin-left: 180px;
+    }
+
+    .container-1 {
+        margin-top: -70px;
+        margin-left: 50px;
+    }
+
+    .container-2 {
+        margin-left: 140px;
+    }
+
+    .container-3 {
+        margin-left: -40px;
+        margin-top: 300px;
+    }
+
+    .container-4 {
+        margin-top: 800px;
+        margin-left: 0px;
+    }
+
+    .container-5 {
+        margin-top: 1100px;
+        margin-left: 220px;
+    }
+
+    #target {
+        font-size: 70px;
+        margin-left: 480px;
+        margin-top: 600px;
+    }
+
+    #exp {
+        font-size: 70px;
+        margin-left: 500px;
+        margin-top: 1320px;
+    }
+
+    #gmail {
+        font-size: 70px;
+        margin-left: 500px;
+        margin-top: 1350px;
+    }
+
+    #programador {
+        width: 140%;
+    }
+
+}

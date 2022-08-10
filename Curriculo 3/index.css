@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Montserrat&family=Poppins:wght@100;300&family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Monoton&family=Montserrat&family=Poppins:wght@100;300&family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Monoton&family=Montserrat&family=Poppins:wght@100;300&family=Righteous&display=swap');
+
+
+@keyframes pro {
+   0% {transform: rotate(0deg);}
+   50% {transform: rotate(10deg);}
+   75% {transform: rotate(-10deg);}
+   100% {transform: rotate(0deg);}
+}
+
+@keyframes g {
+    0% {transform: rotate(0deg);}
+    50% {transform: rotate(20deg);}
+    75% {transform: rotate(-20deg);}
+    100% {transform: rotate(0deg);}
+}
+
+body {
+    background-color: #2b2a2a;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.topnav {
+    position: fixed;
+    background-color: #202020;
+    transform: translate(-50%, -50%);
+    font-family: Hind;
+    top: 5%;
+    width: 100%;
+    margin-left: 950px;
+}
+
+.topnav a{
+    text-decoration: none;
+    color: white;
+    font-family: Hind;
+}
+
+#doca {
+    margin-top: -10000px;
+    border-radius: 100px;
+    margin-left: 300px;
+}
+
+#github {
+    font-size: 25px;
+    color: white;
+    background-color: inherit;
+    margin-top: 100px;
+    margin-left: 1400px;
+    transition-duration: 0.4s;
+}
+
+#linkedin {
+    margin-left: 1500px;
+    margin-top: -65px;
+    font-size: 25px;
+    color: white;
+    background-color: inherit;
+    transition-duration: 0.4s;
+}
+
+.container-1 {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 60%;
+    left: 58%;
+}
+
+.container-2 {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 27%;
+}
+
+.container-3 {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 140%;
+    left: 34%;
+}
+
+.container-4 {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 280%;
+    left: 34%;
+}
+
+.container-5 {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 410%;
+    left: 34%;
+}
+
+#programador {
+    margin-left: 160px;
+    width: 90%;
+    transition-duration: 0.4s;
+    animation-name: pro;
+    animation-iteration-count: 1;
+    animation-duration: 4s;
+    animation-delay: 2s;
+}
+
+#nome {
+    font-family: Monoton;
+    color: rgb(245, 234, 219);
+    font-size: 70px;
+}
+
+#sol {
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}
+
+#lua {
+    margin-left: 40px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}
+
+#sol {transition-duration: 0.4s;}
+#sol:hover {transform: rotate(360deg);}
+
+#lua {transition-duration: 0.4s;}
+#lua:hover {transform: rotate(360deg);}
+
+button {
+    border-style: none;
+    background-color: inherit;
+}
+
+#obj {
+    font-family: Poppins;
+    color: rgb(245, 234, 219);
+    font-size: 70px;
+    transition-duration: 0.4s;
+    margin-left: 200px;
+}
+
+#objT {
+    font-size: 25px;
+    margin-left: 200px;
+    font-family: Poppins;
+    color: white;
+}
+
+.objt {
+    color: white;
+    margin-left: 200px;
+    font-size: 25px;
+    font-family: Poppins;
+}
+
+#ob {
+    color: white;
+    margin-left: 200px;
+    font-size: 70px;
+    font-family: Poppins;
+}
+
+#target {
+    color: white;
+    margin-left: 1200px;
+    margin-top: 65%;
+    font-size: 200px;
+    transform: rotate(7deg);
+}
+
+#exp {
+    color: white;
+    margin-left: 1200px;
+    margin-top: 30%;
+    font-size: 200px;
+    transform: rotate(7deg);
+}
+
+#python {
+    margin-left: 210px;
+    border-style: none;
+    color: rgb(68, 64, 64);
+    background-color: rgb(68, 64, 64);
+    width: 10%;
+    transition-duration: 15000s;
+}
+
+#python:after {
+    content: '70%';
+}
+
+#python:hover {
+    transition-duration: 0.7s;
+    border-style: none;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #2dc07c;
+    color: white;
+    width: 80%;
+}
+
+#sql {
+    margin-left: 210px;
+    color: rgb(68, 64, 64);
+    background-color: rgb(68, 64, 64);
+    border-style: none;
+    width: 10%;
+    transition-duration: 15000s;
+}
+
+#sql:after {
+    content: '50%';
+}
+
+#sql:hover {
+    transition-duration: 0.7s;
+    border-style: none;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #49c4da;
+    color: white;
+    width: 60%;
+}
+
+#javascript {
+    margin-left: 210px;
+    border-style: none;
+    color: rgb(68, 64, 64);
+    background-color: rgb(68, 64, 64);
+    width: 10%;
+    transition-duration: 15000s;
+}
+
+#javascript:after {
+    content: '40%';
+}
+
+#javascript:hover {
+    transition-duration: 0.7s;
+    border-style: none;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #F7E018;
+    color: white;
+    width: 50%;
+}
+
+#html {
+    margin-left: 210px;
+    border-style: none;
+    width: 10%;
+    transition-duration: 15000s;
+    color: rgb(68, 64, 64);
+    background-color: rgb(68, 64, 64);
+}
+
+#html:after {
+    content: '40%';
+}
+
+#html:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #FF4C15;
+    transition-duration: 0.7s;
+    border-style: none;
+    color: white;
+    width: 50%;
+}
+
+#css {
+    margin-left: 210px;
+    border-style: none;
+    color: rgb(68, 64, 64);
+    background-color: rgb(68, 64, 64);
+    width: 10%;
+    transition-duration: 15000s;
+}
+
+#css:after {
+    content: '30%';
+}
+
+#css:hover {
+    transition-duration: 0.7s;
+    border-style: none;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #0076BE;
+    color: white;
+    width: 40%;
+}
+
+#icon {transition-duration: 0.4s}
+#icon:hover{transform: rotate(360deg);}
+
+#f {
+    font-family: Poppins;
+    color: rgb(245, 234, 219);
+    font-size: 70px;
+    transition-duration: 0.4s;
+    margin-left: -200px;
+}
+
+#formT {
+    font-family: Poppins;
+    color: rgb(245, 234, 219);
+    font-size: 30px;
+    transition-duration: 0.4s;
+    margin-left: -200px;
+}
+
+input[type=text] {
+    margin-left: -200px;
+    font-size: 25px;
+    border-style: none;
+}
+
+textarea {
+    margin-left: -200px;
+    font-size: 25px;
+    border-style: none;
+}
+
+#enviar {
+    color: rgb(255, 255, 255);
+    background-color: #686262;
+    font-size: 25px;
+    margin-top: 10px;
+    margin-left: -200px;
+    border-style: none;
+    cursor: pointer;
+    transition-duration: 0.0s
+}
+
+
+#enviar:active {
+    background-color: #2b2a2a;
+}
+
+#gmail {
+    color: white;
+    margin-left: 1100px;
+    margin-top: 70%;
+    font-size: 200px;
+    transform: rotate(7deg);
+}
