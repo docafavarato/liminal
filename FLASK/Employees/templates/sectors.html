@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+{% block body %}
+<div class="container mt-5">
+    <div class="d-flex flex-column">
+        <a type="button" class="btn btn-success btn-lg mb-3" style="border-radius: 0;"
+            href="{{ url_for('createSector') }}">Create a new sector</a>
+    </div>
+</div>
+<div class="container align-items-center justify-content-center mt-5">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Num. Employees</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sector in data %}
+            <tr>
+                <th scope="row">{{ sector["id"] }}</th>
+                <td>{{ sector["name"] }}</td>
+                <td>{{ sector["employeesCount"] }}</td>
+                <td>
+                    <a href="{{ url_for('sectorDetails', id=sector['id']) }}"><i class="fa-solid fa-pen-to-square"></i></a> 
+                    {% if sector["employeesCount"] == 0 %}
+                    <a href="{{ url_for('deleteSector', id=sector['id']) }}"><i class="fa-solid fa-trash"></i></a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

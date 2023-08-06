@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% block body %}
+<div class="container mt-5">
+    <form method="post">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="email">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input type="text" class="form-control" name="phone">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Birthday</label>
+            <input type="date" class="form-control" name="birthday" data-provider="datepicker">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">$</span>
+            <input type="numeric" class="form-control" name="salary">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Image URL</label>
+            <input type="text" class="form-control" name="img">
+        </div>
+        <div class="mb-3">
+            <select class="form-select" name="select">
+                <option selected>Sector</option>
+                {% for sector in sectors %}
+                <option value="{{ sector['id'] }}">{{ sector['name'] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+{% endblock %}

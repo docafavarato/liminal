@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% block body %}
+<div class="container mt-5">
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Amount</label>
+            <input type="text" class="form-control" value="{{ payment['amount'] }}" name="amount">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Date</label>
+            <input type="date" class="form-control" value="{{ payment['date'] }}" name="date">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Employee</label>
+            <select class="form-select" name="employeeId">
+                <option selected value="-1">All</option>
+                {% for employee in employees %}
+                <option value="{{ employee['id'] }}">{{ employee["name"] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+{% endblock %}
