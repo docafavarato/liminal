@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,45 +11,44 @@
     <script src="../scripts/erro.js"></script>
     <script src="../scripts/relogio.js"></script>
 </head>
+
 <body>
-<!-- BARRA DE TAREFAS -->  
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- BARRA DE TAREFAS -->
     <div class="barradiv">
-        
-    <img src="../styles/images/barra.png" class="barra">
-    
+        <img src="../styles/images/barra.png" class="barra">
     </div>
 
-        <!-- Relógio -->
-        <div class="relogio" id="relogio"></div>
+    <!-- Relógio -->
+    <div class="relogio" id="relogio"></div>
 
- <!-- -------------- -->
-
- <!-- ICONES -->  
+    <!-- ICONES -->
     <div class="icones">
-          
-            <img src="../styles/images/trash.png" class="trash" id="thrash" onclick="mostrarErro()"> <div class="recycle"> Recycle Bin </div>
-           
-        
-            <img src="../styles/images/file.png" class="file"> <div class="liminal"> Liminal </div>
-          
+        <img src="../styles/images/trash.png" class="trash" id="thrash" onclick="mostrarErro()">
+        <div class="recycle"> Recycle Bin </div>
+        <img src="../styles/images/file.png" class="file">
+        <div class="liminal"> Liminal </div>
     </div>
-<!------------->
+    <!------------->
 
-<div class="windows" onclick="mostrarErro()"></div>
+    <div class="windows" onclick="mostrarErro()"></div>
 
- <!-- Aba de erro -->
- <div class="erro-overlay" id="erroOverlay">
-    <a class="barraerro"> Erro </a>
-    <img class="barraazul" src="../styles/images/barraazul.png">
-    <button class="fechar1" onclick="fecharErro()" ><img class="x" src="../styles/images/fechar.png"></button>
-    <img class="erro" src="../styles/images/erro.png">
-    <a class="menssagem"> Você não devia estar aqui. </a>
-    <button class="fechar2" onclick="fecharErro()" >OK</button>
-</div>
-<!-- ------------- -->
+    <!-- Aba de erro -->
+    <div class="erro-overlay" id="erroOverlay">
+        <a class="barraerro"> Erro </a>
+        <img class="barraazul" src="../styles/images/barraazul.png">
+        <button class="fechar1" onclick="fecharErro()"><img class="x" src="../styles/images/fechar.png"></button>
+        <img class="erro" src="../styles/images/erro.png">
+        <a class="menssagem"> Você não devia estar aqui. </a>
+        <button class="fechar2" onclick="fecharErro()">OK</button>
+    </div>
+    <!-- ------------- -->
 
-<!-- AUDIOS -->
-<audio id="click" src="../styles/audios/click.mp3" preload="auto"></audio>
-<!-- ----------- -->
+    <!-- AUDIOS -->
+    <audio id="click" src="../styles/audios/click.mp3" preload="auto"></audio>
+    <!-- ----------- -->
 </body>
+
 </html>
