@@ -42,6 +42,7 @@ body {
 
 /* ÍCONES */
 .icones {
+    margin-top: 1vh;
     margin-left: 2.4vh;
     display: flex;
     flex-direction: column;
