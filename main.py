@@ -1,5 +1,6 @@
 import requests
 from flask import Flask, render_template, url_for, redirect
+import json
 
 app = Flask(__name__)
 
@@ -9,12 +10,10 @@ def index():
 
 @app.route("/desktop", methods=["GET"])
 def desktop():
-    return render_template("desktop.html")
-
-@app.route("/desktop/liminal", methods=["GET"])
-def liminal():
-    spaces = requests.get("http://localhost:8080/spaces").json()
-    return render_template("liminal.html", spaces=spaces)
+    with open("teste.json") as f:
+        data = f.read()
+    spaces = json.loads(data)
+    return render_template("desktop.html", spaces=spaces)
 
 if __name__ == '__main__':
     app.run(debug=True)

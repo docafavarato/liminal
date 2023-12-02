@@ -99,6 +99,7 @@ button {
     background-size: cover !important;
     background-repeat: no-repeat !important;
     height: 2rem;
+    border: none !important;
 }
 
 .modal-footer button {
@@ -142,4 +143,36 @@ a {
 
 .no-select {
     user-select: none !important;
+}
+
+.black {
+    color: black !important;
+}
+
+.options {
+    display: flex;
+    flex-direction: row;
+}
+
+#options {
+    margin-top: -2.3rem;
+    margin-left: -1rem;
+    background-color: rgb(202, 201, 201) !important;
+    border-radius: 0px !important;
+    width: 70%;
+    padding: 5x;
+}
+
+.option {
+    line-height: 0.5rem !important;
+    border-radius: 0px !important; 
+    height: 1.5rem !important;
+    background-color: none !important;
+    border: none !important;
+    transition-duration: 0s !important;
+}
+
+.option:hover {
+    background-color: rgb(20, 20, 248) !important;
+    color: white !important;
 }

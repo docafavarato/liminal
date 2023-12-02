@@ -1,0 +1,37 @@
+[  {
+        "id": 1,
+        "name": "Poolrooms",
+        "description": "Poolrooms are an expansive complex of interconnected rooms and corridors slightly submerged in undulating, lukewarm water. Each area of the level varies greatly in size and structure, ranging from uniform pools and hallways to more open, abnormally-shaped areas. The walls, ceilings, and floors of the level all appear to be constructed from the same white ceramic tile, with the only deviation from this color being the blue-green hue of the water.",
+        "imgUrl": "https://i.redd.it/23vyrz9d19d91.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Dreamcore",
+        "description": "Dreamcore is commonly portrayed through images and videos, which utilize different base images such as liminal spaces, unrealistic terrain and structures (photoshopped hills, floating buildings, etc.), or even fantasy-like lands, to give the visual a dream-like quality. Dreamcore visuals are typically lighter-toned and pastel in color, or more bright and vivid. These ‘base images’ are then overlaid with different elements, with the major ones being text and characters.",
+        "imgUrl": "https://imgs.search.brave.com/grfDukIjf5RUt2p2ZelaG7oxPoBjJpHFbgdiis5mmJ0/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzcwL2M0/L2ZiLzcwYzRmYmI3/ZWJjNTY3OWUwYzc1/ZWY5OGM4NWI1YmRl/LmpwZw"
+    },
+    {
+        "id": 3,
+        "name": "Level 0",
+        "description": "Level 0 is very pica mucho loko",
+        "imgUrl": ""
+    },
+    {
+        "id": 4,
+        "name": "Test 2",
+        "description": "",
+        "imgUrl": ""
+    },
+    {
+        "id": 5,
+        "name": "Test 3",
+        "description": "",
+        "imgUrl": ""
+    },
+    {
+        "id": 6,
+        "name": "Test 4",
+        "description": "",
+        "imgUrl": ""
+    }
+]

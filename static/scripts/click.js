@@ -4,11 +4,13 @@ function playSound(filename) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    var modal = document.getElementById('staticBackdrop');
+    var modals = document.querySelectorAll('.modal');
 
-    modal.addEventListener('click', function (event) {
-        if (event.target === modal) {
-            playSound("pop-up-blocked");
-        }
+    modals.forEach(function (modal) {
+        modal.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                playSound("pop-up-blocked");
+            }
+        });
     });
 });

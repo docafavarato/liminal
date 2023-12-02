@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <title>L I M I N A L</title>
     <link rel="icon" href="{{ url_for('static', filename='styles/images/icon.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/css/index.css') }}">
@@ -29,17 +32,21 @@
         <!-- Relógio -->
         <div class="relogio no-select" id="relogio"></div>
 
-        <div class="windows" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="playSound('click'); playSound('error');"></div>
+        <div class="windows" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+            onclick="playSound('click'); playSound('error');"></div>
 
         {% block body %}
         <!-- ICONES -->
         <div class="icon-group mt-3">
             <div class="group">
-                <img src="{{ url_for('static', filename='styles/images/trash.png') }}" class="icon" id="thrash" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="playSound('click'); playSound('error')">
+                <img src="{{ url_for('static', filename='styles/images/trash.png') }}" class="icon" id="thrash"
+                    data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                    onclick="playSound('click'); playSound('error')">
                 <div class="recycle icon-text no-select">Recycle Bin</div>
             </div>
             <div class="group">
-                <a href="{{ url_for('liminal') }}" style="cursor: url('../images/pointer.cur'), auto;"><img src="{{ url_for('static', filename='styles/images/file.png') }}" class="icon mt-4" onclick="playSound('click');""></a>
+                <img src="{{ url_for('static', filename='styles/images/file.png') }}" class="icon mt-4"
+                    onclick="playSound('click');" data-bs-toggle="modal" data-bs-target="#explorer">
                 <div class="liminal icon-text no-select">Liminal</div>
             </div>
         </div>
@@ -48,11 +55,13 @@
 
         <script>
             $(function () {
-              $(".group").draggable();  
-              $(".modal").draggable();
+                $(".group").draggable();
+                $(".modal").draggable({
+                    handle: ".modal-header"
+                });
             });
         </script>
-        
+
         <!-- Modal -->
         <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -61,23 +70,143 @@
                     <div class="modal-header">
                         <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">Error</h1>
                         <!-- <i class="fa-solid fa-xmark fa-xl close-btn" style="color: #ffffff; cursor: pointer;" data-bs-dismiss="modal" aria-label="Close"></i> -->
-                        <button class="close-btn" data-bs-dismiss="modal" aria-label="Close" onclick="playSound('click')">X</button>
+                        <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
+                            onclick="playSound('click')">X</button>
                     </div>
-                    <div class="modal-body" id="modal-body">
-                        <img src="{{ url_for('static', filename='styles/images/error-icon-4.png') }}" class="error-image">
+                    <div class="modal-body no-select" id="modal-body">
+                        <img src="{{ url_for('static', filename='styles/images/error-icon-4.png') }}"
+                            class="error-image no-select">
                         <span style="margin-left: 1rem;" class="no-select">You shouldn't be here.</span>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary no-select" data-bs-dismiss="modal" onclick="playSound('click')">OK</button>
+                        <button type="button" class="btn btn-secondary no-select" data-bs-dismiss="modal"
+                            onclick="playSound('click')">OK</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="modal" id="explorer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content no-select">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
+                            <img src="../static/styles/images/file-icon.png"
+                                style="width: 6%; margin-left: -0.8rem; margin-bottom: 0.3rem;">
+                            Liminal
+                        </h1>
+                        <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
+                            onclick="playSound('click')">X</button>
+                    </div>
+                    <div class="modal-body" id="modal-body">
+                        <div class="btn-group btn-group-sm" role="group" id="options">
+                            <button type="button" class="btn option" onclick="playSound('click')">File</button>
+                            <button type="button" class="btn option" onclick="playSound('click')">Edit</button>
+                            <button type="button" class="btn option" onclick="playSound('click')">View</button>
+                            <button type="button" class="btn option" onclick="playSound('click')">Tools</button>
+                            <button type="button" class="btn option" onclick="playSound('click')">Help</button>
+                        </div>
+                        <div class="row">
+                            {% for space in spaces %}
+                            <div class="col col-md-3 no-select">
+                                <a class="openSpaceModal" data-space-id="{{ space['id'] }}"><img
+                                        src="{{ url_for('static', filename='styles/images/file.png') }}"
+                                        class="icon mt-4" onclick="playSound('click');"></a>
+                                <div class="liminal icon-text black">{{ space["name"] }}</div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                var explorerModal = $("#explorer")
+                $('.openSpaceModal').click(function () {
+                    var spaceId = $(this).data("space-id");
+                    explorerModal.modal("show");
+                    $('#modal-space-' + spaceId).modal('show');
+                });
+                $('.openDescriptionModal').click(function () {
+                    var spaceId = $(this).data("space-id");
+                    $('#modal-notepad-' + spaceId).modal('show');
+                })
+            });
+        </script>
+
+        {% for space in spaces %}
+        <div class="modal" id="modal-space-{{ space['id'] }}" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content no-select">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
+                            <img src="../static/styles/images/icon.png"
+                                style="width: 6%; margin-left: -0.8rem; margin-bottom: 0.3rem;">
+                            {{ space['name'] }}
+                        </h1>
+                        <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
+                            onclick="playSound('click')">X</button>
+                    </div>
+                    <div class="modal-body" id="modal-body">
+                        <div class="btn-group btn-group-sm" role="group" id="options">
+                            <button type="button" class="btn option" onclick="playSound('click')">File</button>
+                            <button type="button" class="btn option" onclick="playSound('click')">Edit</button>
+                            <button type="button" class="btn option" onclick="playSound('click')">View</button>
+                            <button type="button" class="btn option" onclick="playSound('click')">Tools</button>
+                            <button type="button" class="btn option" onclick="playSound('click')">Help</button>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-3 no-select">
+                                <a class="openDescriptionModal" data-space-id="{{ space['id'] }}"><img
+                                        src="{{ url_for('static', filename='styles/images/NOTEPAD.EXE_14_2-6.png') }}"
+                                        class="icon mt-4" onclick="playSound('click');"></a>
+                                <div class="liminal icon-text black">description.txt</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modal-notepad-{{ space['id'] }}" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header no-select">
+                        <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
+                            <img src="../static/styles/images/NOTEPAD.EXE_14_2-6.png"
+                                style="width: 10%; margin-left: -0.8rem; margin-bottom: 0.3rem;">
+                            description - Notepad
+                        </h1>
+                        <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
+                            onclick="playSound('click')">X</button>
+                    </div>
+                    <div class="modal-body" id="modal-body">
+                        <div class="btn-group btn-group-sm" role="group" id="options">
+                            <button type="button" class="btn option" onclick="playSound('click')">File</button>
+                            <button type="button" class="btn option" onclick="playSound('click')">Edit</button>
+                            <button type="button" class="btn option" onclick="playSound('click')">Format</button>
+                            <button type="button" class="btn option" onclick="playSound('click')">View</button>
+                            <button type="button" class="btn option" onclick="playSound('click')">Help</button>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-12">
+                                <div class="liminal icon-text black">{{ space["description"] }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 
     <!-- AUDIOS -->
     <audio id="click" src="{{ url_for('static', filename='styles/audios/click.mp3') }}" preload="auto"></audio>
-    <audio id="error-sound" src="{{ url_for('static', filename='styles/audios/error-sound-2.mp3') }} preload="auto"></audio>
+    <audio id="error-sound" src="{{ url_for('static', filename='styles/audios/error-sound-2.mp3') }} preload="
+        auto"></audio>
     <audio id="pop-up-blocked" src="{{ url_for('static', filename='styles/audios/pop-up-blocked.mp3') }}"></audio>
     <audio id="error" src="{{ url_for('static', filename='styles/audios/error.mp3') }}"></audio>
     <!-- ----------- -->
