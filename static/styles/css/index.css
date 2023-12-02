@@ -1,6 +1,11 @@
+
+html {
+    cursor: url("../images/cursor.cur"), auto !important;
+}
+
 body {
     overflow: hidden;
-    background-image: url(../images/xp.jpg) !important;
+    background-image: url("../images/xp.jpg") !important;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -19,6 +24,9 @@ body {
     z-index: 999;
 }
 
+button {
+    cursor: url("../images/pointer.cur"), auto !important;
+}
 
 /* BARRA DE TAREFAS */
 .barra {
@@ -57,7 +65,7 @@ body {
 
 .icon {
     width: 3rem;
-    cursor: pointer;
+    cursor: url("../images/pointer.cur"), auto;
 }
 
 .icon-text {
@@ -72,7 +80,7 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
-    cursor: pointer;
+    cursor: url("../images/pointer.cur"), auto !important;
 }
 
 .error-text {
@@ -87,7 +95,7 @@ body {
 .modal-header {
     color: white;
     border-radius: 0px !important;
-    background-image: url(../images/barraazul.png) !important;
+    background-image: url("../images/barraazul.png") !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     height: 2rem;
@@ -124,6 +132,14 @@ body {
     background-color: red;
     height: 1.5rem;
     width: 1.5rem;
-    cursor: pointer;
+    cursor: url("../images/pointer.cur"), auto !important;
     margin-right: -0.8rem !important;
+}
+
+a {
+    cursor: url("../images/pointer.cur"), auto !important;
+}
+
+.no-select {
+    user-select: none !important;
 }

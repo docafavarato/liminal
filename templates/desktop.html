@@ -4,14 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <title>L I M I N A L</title>
-    <link rel="icon" href="static/styles/images/icon.png" type="image/png">
+    <link rel="icon" href="{{ url_for('static', filename='styles/images/icon.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/css/index.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="{{ url_for('static', filename='scripts/click.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/erro.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/relogio.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 
 <body>
@@ -23,37 +27,48 @@
         </div>
 
         <!-- Relógio -->
-        <div class="relogio" id="relogio"></div>
+        <div class="relogio no-select" id="relogio"></div>
 
         <div class="windows" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="playSound('click'); playSound('error');"></div>
 
         {% block body %}
         <!-- ICONES -->
         <div class="icon-group mt-3">
-            <img src="{{ url_for('static', filename='styles/images/trash.png') }}" class="icon" id="thrash" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="playSound('click'); playSound('error')">
-            <div class="recycle icon-text">Recycle Bin</div>
-            <a href="{{ url_for('liminal') }}"><img src="{{ url_for('static', filename='styles/images/file.png') }}" class="icon mt-4" onclick="playSound('click');""></a>
-            <div class="liminal icon-text">Liminal</div>
+            <div class="group">
+                <img src="{{ url_for('static', filename='styles/images/trash.png') }}" class="icon" id="thrash" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="playSound('click'); playSound('error')">
+                <div class="recycle icon-text no-select">Recycle Bin</div>
+            </div>
+            <div class="group">
+                <a href="{{ url_for('liminal') }}" style="cursor: url('../images/pointer.cur'), auto;"><img src="{{ url_for('static', filename='styles/images/file.png') }}" class="icon mt-4" onclick="playSound('click');""></a>
+                <div class="liminal icon-text no-select">Liminal</div>
+            </div>
         </div>
         <!------------->
         {% endblock %}
 
+        <script>
+            $(function () {
+              $(".group").draggable();  
+              $(".modal").draggable();
+            });
+        </script>
+        
         <!-- Modal -->
         <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Error</h1>
+                        <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">Error</h1>
                         <!-- <i class="fa-solid fa-xmark fa-xl close-btn" style="color: #ffffff; cursor: pointer;" data-bs-dismiss="modal" aria-label="Close"></i> -->
                         <button class="close-btn" data-bs-dismiss="modal" aria-label="Close" onclick="playSound('click')">X</button>
                     </div>
                     <div class="modal-body" id="modal-body">
                         <img src="{{ url_for('static', filename='styles/images/error-icon-4.png') }}" class="error-image">
-                        <span style="margin-left: 1rem;">You shouldn't be here.</span>
+                        <span style="margin-left: 1rem;" class="no-select">You shouldn't be here.</span>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="playSound('click')">OK</button>
+                        <button type="button" class="btn btn-secondary no-select" data-bs-dismiss="modal" onclick="playSound('click')">OK</button>
                     </div>
                 </div>
             </div>
@@ -67,9 +82,6 @@
     <audio id="error" src="{{ url_for('static', filename='styles/audios/error.mp3') }}"></audio>
     <!-- ----------- -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
