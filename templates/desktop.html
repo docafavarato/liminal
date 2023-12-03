@@ -63,6 +63,22 @@
             });
         </script>
 
+        <script>
+            $(document).ready(function () {
+                $('.folder-click').click(function () {
+                    $('#fullscreen-video-container').show();
+                    var video = $('#fullscreen-video')[0];
+                    video.load();
+                    video.play();
+
+                    setTimeout(function () {
+                        video.pause();
+                        $('#fullscreen-video-container').hide();
+                    }, 3000);
+                });
+            });
+        </script>
+
         <!-- Modal -->
         <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -117,6 +133,12 @@
                                 <div class="liminal icon-text black">{{ space["name"] }}</div>
                             </div>
                             {% endfor %}
+                            <div class="col col-md-3 no-select">
+                                <a class="folder-click"><img
+                                        src="{{ url_for('static', filename='styles/images/file.png') }}"
+                                        class="icon mt-4" onclick="playSound('click'); playSound('error-sound')"></a>
+                                <div class="liminal icon-text black">???</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -183,7 +205,7 @@
                                 <a class="openImageModal" data-image-index="{{ loop.index0 }}"
                                     data-space-id="{{ space['id'] }}"><img src="{{ image }}" class="icon mt-4"
                                         onclick="playSound('click');"></a>
-                                <div class="liminal icon-text black">{{ loop.index }}</div>
+                                <div class="liminal icon-text black">{{ loop.index }}.png</div>
                             </div>
                             {% endfor %}
                         </div>
@@ -279,8 +301,8 @@
 
     <!-- AUDIOS -->
     <audio id="click" src="{{ url_for('static', filename='styles/audios/click.mp3') }}" preload="auto"></audio>
-    <audio id="error-sound" src="{{ url_for('static', filename='styles/audios/error-sound-2.mp3') }} preload="
-        auto"></audio>
+    <audio id="error-sound" src="{{ url_for('static', filename='styles/audios/error-sound-2.mp3') }}"
+        preload="auto"></audio>
     <audio id="pop-up-blocked" src="{{ url_for('static', filename='styles/audios/pop-up-blocked.mp3') }}"></audio>
     <audio id="error" src="{{ url_for('static', filename='styles/audios/error.mp3') }}"></audio>
 
@@ -295,14 +317,30 @@
             type="audio/mp3">
         <source src="../static/styles/audios/songs/Yume Nikki - Barracks Settlement (320 kbps).mp3" type="audio/mp3">
         <source src="../static/styles/audios/songs/Yume Nikki OST - Snow World (320 kbps).mp3" type="audio/mp3">
-        <source src="../static/styles/audios/songs/Late afternoon drifting - The Caretaker (Stage 1) (256 kbps).mp3" type="audio/mp3">
-        <source src="../static/styles/audios/songs/childishly fresh eyes - the caretaker Everywhere at the End of Time (256 kbps).mp3" type="audio/mp3">
+        <source src="../static/styles/audios/songs/Late afternoon drifting - The Caretaker (Stage 1) (256 kbps).mp3"
+            type="audio/mp3">
+        <source
+            src="../static/styles/audios/songs/childishly fresh eyes - the caretaker Everywhere at the End of Time (256 kbps).mp3"
+            type="audio/mp3">
         <source src="../static/styles/audios/songs/The Day Of Night (320 kbps).mp3" type="audio/mp3">
         <source src="../static/styles/audios/songs/Terekke - ambien (320 kbps).mp3" type="audio/mp3">
-        <source src="../static/styles/audios/songs/Hisohkah - School Rooftop (Intro) (Slowed Down) (256 kbps).mp3 - ambien (320 kbps).mp3" type="audio/mp3">
+        <source src="../static/styles/audios/songs/Hisohkah - School Rooftop (Intro) (Slowed Down) (256 kbps).mp3"
+            type="audio/mp3">
     </audio>
     <!-- ----------- -->
 
+    <script>
+        function closeFullscreen() {
+            $('#fullscreen-video-container').hide();
+        }
+    </script>
+
+    <div id="fullscreen-video-container" class="fullscreen-container">
+        <video id="fullscreen-video" autoplay onended="closeFullscreen()">
+            <source src="../static/styles/images/y2mate.bz - Windows XP Horror Edition (online-video-cutter.com).mp4"
+                type="video/mp4">
+        </video>
+    </div>
 </body>
 
 </html>
