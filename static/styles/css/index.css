@@ -95,11 +95,10 @@ button {
 .modal-header {
     color: white;
     border-radius: 0px !important;
-    background-image: url("../images/barraazul.png") !important;
+    background-color: rgb(0, 87, 229) !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     height: 2rem;
-    border: none !important;
 }
 
 .modal-footer button {
@@ -120,9 +119,9 @@ button {
 .modal-content {
     border-radius: 0px !important;
     border-top: 0px solid !important;
-    border-left: 3px solid #1cc4ec !important;
-    border-right: 3px solid #1cc4ec !important;
-    border-bottom: 3px solid #1cc4ec !important;
+    border-left: 3px solid rgb(0, 87, 229) !important;
+    border-right: 3px solid rgb(0, 87, 229) !important;
+    border-bottom: 3px solid rgb(0, 87, 229) !important;
 }
 
 .close-btn {
@@ -175,4 +174,12 @@ a {
 .option:hover {
     background-color: rgb(20, 20, 248) !important;
     color: white !important;
+}
+
+.close-btn:hover {
+    filter: grayscale(15%);
+}
+
+.modal-header:active {
+    cursor: url("../images/drag.cur"), auto !important;
 }
