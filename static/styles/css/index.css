@@ -208,3 +208,32 @@ html {
     background-color: rgb(20, 20, 248) !important;
     color: white !important;
 }
+
+.windows{
+    width: 145px;
+    height: 32px;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    cursor: url("../images/pointer.cur"), auto !important;
+    background-image: url("../images/start.png");
+    background-size: 80%;
+    background-repeat: no-repeat;
+}
+.windows:hover{
+    filter: brightness(120%);
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (h/w * 100%) */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
