@@ -36,7 +36,7 @@ button {
 .barra {
     width: 150% !important;
     margin-left: -1rem !important;
-    height: 2.2rem !important; 
+    height: 2.4rem !important; 
     display: block;
     margin: 0 auto; 
 }
@@ -47,7 +47,7 @@ button {
     bottom: 0;
     right: 0;
     background: linear-gradient(to bottom, rgb(236, 241, 247), rgb(88, 154, 185));
-    height: 2.2rem !important;
+    height: 2.4rem !important;
     width: 5rem !important;
 }
 
