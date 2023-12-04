@@ -24,25 +24,21 @@
 
 <body>
     <div class="container-fluid container-main">
-
-        <!-- BARRA DE TAREFAS -->
         <div class="barradiv">
             <img src="{{ url_for('static', filename='styles/images/barra.png') }}" class="barra">
         </div>
 
-        <!-- Relógio -->
         <div class="relogio no-select" id="relogio"></div>
 
         <div class="windows" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
             onclick="playSound('click'); playSound('error');"></div>
 
         {% block body %}
-        <!-- ICONES -->
         <div class="icon-group mt-3">
             <div class="group">
                 <img src="{{ url_for('static', filename='styles/images/trash.png') }}" class="icon" id="thrash"
-                    data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                    onclick="playSound('click'); playSound('error')">
+                    data-bs-toggle="modal" data-bs-target="#modal-trash"
+                    onclick="playSound('click');">
                 <div class="recycle icon-text no-select">Recycle Bin</div>
             </div>
             <div class="group">
@@ -119,10 +115,10 @@
                     </div>
                     <div class="modal-body" id="modal-body">
                         <div class="btn-group btn-group-sm" role="group" id="options">
-                            <button type="button" class="btn option" onclick="playSound('click')">File</button>
-                            <button type="button" class="btn option" onclick="playSound('click')">Edit</button>
-                            <button type="button" class="btn option" onclick="playSound('click')">View</button>
-                            <button type="button" class="btn option" onclick="playSound('click')">Tools</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">File</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Edit</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">View</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Tools</button>
                             <button type="button" class="btn option active toggle-button" onclick="playSound('click')"
                                 data-bs-toggle="button" id="toggle-music" aria-pressed="true">Toggle music</button>
                             <button type="button" class="btn option openHelpModal"
@@ -161,9 +157,13 @@
                     var spaceId = $(this).data("space-id");
                     $('#modal-notepad-' + spaceId).modal('show');
                 })
-                
+
                 $('.openHelpModal').click(function () {
                     $('#modal-help').modal('show');
+                })
+
+                $('.openErrorModal').click(function () {
+                    $('#staticBackdrop').modal('show');
                 })
             });
         </script>
@@ -228,11 +228,11 @@
                     </div>
                     <div class="modal-body" id="modal-body">
                         <div class="btn-group btn-group-sm" role="group" id="options">
-                            <button type="button" class="btn option" onclick="playSound('click')">File</button>
-                            <button type="button" class="btn option" onclick="playSound('click')">Edit</button>
-                            <button type="button" class="btn option" onclick="playSound('click')">View</button>
-                            <button type="button" class="btn option" onclick="playSound('click')">Tools</button>
-                            <button type="button" class="btn option" onclick="playSound('click')">Help</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">File</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Edit</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">View</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Tools</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Help</button>
                         </div>
                         <div class="row">
                             <div class="col col-md-3 no-select">
@@ -247,14 +247,15 @@
                                     data-space-id="{{ space['id'] }}">
                                     {% if "WEB_EMBEDDED_PLAYER" not in image %}
                                     <img src="{{ image }}" class="icon mt-4" onclick="playSound('click');"></a>
-                                    {% else %}
-                                    <img src="../static/styles/images/media.png" class="icon mt-4" onclick="playSound('click');"></a>
-                                    {% endif %}
+                                {% else %}
+                                <img src="../static/styles/images/media.png" class="icon mt-4"
+                                    onclick="playSound('click');"></a>
+                                {% endif %}
                                 <div class="liminal icon-text black">
                                     {% if "WEB_EMBEDDED_PLAYER" not in image %}
-                                        {{ loop.index }}.png
+                                    {{ loop.index }}.png
                                     {% else %}
-                                        {{ loop.index }}.mp4
+                                    {{ loop.index }}.mp4
                                     {% endif %}
                                 </div>
                             </div>
@@ -279,11 +280,11 @@
                     </div>
                     <div class="modal-body" id="modal-body">
                         <div class="btn-group btn-group-sm" role="group" id="options">
-                            <button type="button" class="btn option" onclick="playSound('click')">File</button>
-                            <button type="button" class="btn option" onclick="playSound('click')">Edit</button>
-                            <button type="button" class="btn option" onclick="playSound('click')">Format</button>
-                            <button type="button" class="btn option" onclick="playSound('click')">View</button>
-                            <button type="button" class="btn option" onclick="playSound('click')">Help</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">File</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Edit</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Format</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">View</button>
+                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Help</button>
                         </div>
                         <div class="row">
                             <div class="col col-md-12">
@@ -305,9 +306,9 @@
                             <img src="../static/styles/images/shell32.dll_14_226-2.png"
                                 style="width: 10%; margin-left: -0.8rem; margin-bottom: 0.3rem;">
                             {% if "WEB_EMBEDDED_PLAYER" not in image %}
-                                {{ loop.index }}.png - Windows Picture and Fax Viewer
+                            {{ loop.index }}.png - Windows Picture and Fax Viewer
                             {% else %}
-                                {{ loop.index }}.mp4 - Windows Media Player
+                            {{ loop.index }}.mp4 - Windows Media Player
                             {% endif %}
                         </h1>
                         <button class="close-btn no-select closeImageModal" data-bs-dismiss="modal" aria-label="Close"
@@ -320,7 +321,8 @@
                                 <img src="{{ image }}" style="max-width: 100%; max-height: 100%;" />
                                 {% else %}
                                 <div class="video-container">
-                                    <iframe id="modal-video" width="640" height="360" src="{{ image }}" frameborder="0"></iframe>
+                                    <iframe id="modal-video" width="640" height="360" src="{{ image }}"
+                                        frameborder="0"></iframe>
                                 </div>
                                 {% endif %}
                             </div>
@@ -356,6 +358,48 @@
         </div>
     </div>
 
+    <div class="modal" id="modal-trash" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header no-select">
+                    <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
+                        <img src="../static/styles/images/trash.png"
+                            style="width: 5%; margin-left: -0.8rem; margin-bottom: 0.3rem;">
+                        Recycle Bin
+                    </h1>
+                    <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="playSound('click')">X</button>
+                </div>
+                <div class="modal-body no-select" id="modal-body">
+                    <div class="btn-group btn-group-sm" role="group" id="options">
+                        <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Empty</button>
+                        <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Help</button>
+                    </div>
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th class="table-text" onclick="playSound('exclamation');">it.exe</th>
+                            </tr>
+                            <tr>
+                                <th class="table-text" onclick="playSound('exclamation');">feels.exe</th>
+                            </tr>
+                            <tr>
+                                <th class="table-text" onclick="playSound('exclamation');">like.exe</th>
+                            </tr>
+                            <tr>
+                                <th class="table-text" onclick="playSound('exclamation');">a.exe</th>
+                            </tr>
+                            <tr>
+                                <th class="table-text" onclick="playSound('exclamation');">dream.exe</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
     <script>
         $(document).ready(function () {
             document.getElementById('backgroundMusic').volume = 0.5;
@@ -384,13 +428,12 @@
             audio.play();
         }
     </script>
-
     <!-- AUDIOS -->
-    <audio id="click" src="{{ url_for('static', filename='styles/audios/click.mp3') }}" preload="auto"></audio>
-    <audio id="error-sound" src="{{ url_for('static', filename='styles/audios/error-sound-2.mp3') }}"
-        preload="auto"></audio>
+    <audio id="click" src="{{ url_for('static', filename='styles/audios/click.mp3') }}"></audio>
+    <audio id="error-sound" src="{{ url_for('static', filename='styles/audios/error-sound-2.mp3') }}"></audio>
     <audio id="pop-up-blocked" src="{{ url_for('static', filename='styles/audios/pop-up-blocked.mp3') }}"></audio>
     <audio id="error" src="{{ url_for('static', filename='styles/audios/error.mp3') }}"></audio>
+    <audio id="exclamation" src="{{ url_for('static', filename='styles/audios/exclamation.mp3') }}"></audio>
 
     <audio id="backgroundMusic">
         <source src="../static/styles/audios/songs/Kero Kero Bonito - I'd Rather Sleep (320 kbps).mp3" type="audio/mp3">
@@ -410,6 +453,7 @@
         <source src="../static/styles/audios/songs/Terekke - ambien (320 kbps).mp3" type="audio/mp3">
         <source src="../static/styles/audios/songs/Hisohkah - School Rooftop (Intro) (Slowed Down) (256 kbps).mp3"
             type="audio/mp3">
+        <source src="../static/styles/audios/songs/The Lonely Tree (320 kbps).mp3">
     </audio>
     <!-- ----------- -->
 
@@ -423,6 +467,23 @@
         <video id="fullscreen-video" autoplay onended="closeFullscreen()">
             <source src="../static/styles/images/y2mate.bz - Windows XP Horror Edition (online-video-cutter.com).mp4"
                 type="video/mp4">
+        </video>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var video = document.getElementById('background-video');
+            var bootContainer = document.querySelector('.boot-container');
+            video.addEventListener('ended', function () {
+                video.style.display = 'none';
+                bootContainer.parentNode.removeChild(bootContainer);
+            });
+        });
+    </script>
+
+    <div class="boot-container">
+        <video autoplay muted id="background-video" onmouseover="playMusic();">
+            <source src="../static/styles/images/1204.mp4" type="video/mp4">
         </video>
     </div>
 </body>

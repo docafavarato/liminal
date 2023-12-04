@@ -10,7 +10,7 @@ def index():
 
 @app.route("/desktop", methods=["GET"])
 def desktop():
-    with open("teste.json") as f:
+    with open("data.json") as f:
         data = f.read()
     spaces = json.loads(data)
     return render_template("desktop.html", spaces=spaces)
