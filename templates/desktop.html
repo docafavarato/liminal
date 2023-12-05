@@ -24,13 +24,13 @@
 
 <body>
     <div class="container-fluid container-main">
-        <div class="barradiv">
+        <div class="barradiv no-select">
             <img src="{{ url_for('static', filename='styles/images/barra.png') }}" class="barra">
         </div>
 
         <div class="relogio no-select" id="relogio"></div>
 
-        <div class="windows" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+        <div class="windows" data-bs-toggle="modal" data-bs-target="#modal-bar"
             onclick="playSound('click'); playSound('error');"></div>
 
         {% block body %}
@@ -43,12 +43,12 @@
             <div class="group">
                 <img src="{{ url_for('static', filename='styles/images/file.png') }}" class="icon mt-4"
                     onclick="playSound('click');" data-bs-toggle="modal" data-bs-target="#explorer">
-                <div class="liminal icon-text no-select">liminal</div>
+                <div class="songs icon-text no-select">liminal</div>
             </div>
             <div class="group">
                 <img src="{{ url_for('static', filename='styles/images/music-folder.png') }}" class="icon mt-4"
                     onclick="playSound('click');" data-bs-toggle="modal" data-bs-target="#modal-songs">
-                <div class="liminal icon-text no-select">songs</div>
+                <div class="songs icon-text no-select">songs</div>
             </div>
         </div>
         {% endblock %}
@@ -86,15 +86,14 @@
         <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
+                <div class="modal-content" id="error-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">Error</h1>
                         <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
                             onclick="playSound('click')">X</button>
                     </div>
                     <div class="modal-body no-select" id="modal-body">
-                        <img src="{{ url_for('static', filename='styles/images/error-icon-4.png') }}"
-                            class="error-image no-select">
+                        <img src="../static/styles/images/explorer.exe_14_111-4.png" class="error-image no-select">
                         <span style="margin-left: 1rem;" class="no-select">You shouldn't be here.</span>
                     </div>
                     <div class="modal-footer">
@@ -200,8 +199,6 @@
                     spaceId = $(this).data("space-id");
                     imageIndex = $(this).data("image-index");
                     totalImages = $('#modal-space-' + spaceId).attr('data-total-images') - 1;
-                    console.log("total: " + totalImages);
-                    console.log("index: " + imageIndex);
                     openImageModal(spaceId, imageIndex);
                 });
 
@@ -384,7 +381,7 @@
                 if ($('#toggle-music').hasClass('active')) {
                     setTimeout(function () {
                         playRandomMusic();
-                    }, 400);
+                    }, 100);
                 }
             });
             $('.space-modal').on('hidden.bs.modal', function () {
@@ -525,14 +522,39 @@
             </div>
         </div>
     </div>
+
+    <!--<div class="modal" id="modal-bar" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header no-select">
+                    <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
+                        <img src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-541.jpg?size=338&ext=jpg&ga=GA1.1.1222169770.1701734400&semt=ais"
+                            style="width: 10%; margin-left: -0.8rem; margin-bottom: 0.3rem;">
+                        User
+                    </h1>
+                    <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="playSound('click')">X</button>
+                </div>
+                <div class="modal-body no-select" id="modal-body">
+                    <div class="row">
+                        <div class="col col-md-3 no-select">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
     </div>
 
-    <div class="toast bottom-0 end-0 position-fixed mb-5" role="alert" aria-live="assertive" aria-atomic="true" id="toast" style="margin-right: 15px;">
+    <div class="toast bottom-0 end-0 position-fixed mb-5" role="alert" aria-live="assertive" aria-atomic="true"
+        id="toast" style="margin-right: 15px;">
         <div class="toast-header no-select">
             <img src="../static/styles/images/icon.png" style="width: 6%; margin-left: -0.5rem; margin-bottom: 0.3rem;">
             <span style="margin-bottom: 0.3rem;">Notification</span>
             <button class="close-btn no-select ms-auto" data-bs-dismiss="toast" aria-label="Close"
-                        onclick="playSound('click')" style="margin-right: -10px !important; margin-bottom: 0.3rem;">X</button>
+                onclick="playSound('click')" style="margin-right: -10px !important; margin-bottom: 0.3rem;">X</button>
         </div>
         <div class="toast-body">
         </div>
@@ -576,11 +598,11 @@
         });
     </script>
 
-    <!--<div class="boot-container">
+   <!--<div class="boot-container">
         <video autoplay muted id="background-video">
             <source src="../static/styles/images/welcome.mp4" type="video/mp4">
         </video>
-    </div>-->
+    </div>--> 
 </body>
 
 </html>

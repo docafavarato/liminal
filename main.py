@@ -17,7 +17,7 @@ def desktop():
     path = "static/styles/audios/songs"
     files = os.listdir(path)
     songs = [file for file in files]
-
+  
     return render_template("desktop.html", spaces=spaces, songs=songs)
 
 if __name__ == '__main__':
