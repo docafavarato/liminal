@@ -37,17 +37,20 @@
         <div class="icon-group mt-3">
             <div class="group">
                 <img src="{{ url_for('static', filename='styles/images/trash.png') }}" class="icon" id="thrash"
-                    data-bs-toggle="modal" data-bs-target="#modal-trash"
-                    onclick="playSound('click');">
+                    data-bs-toggle="modal" data-bs-target="#modal-trash" onclick="playSound('click');">
                 <div class="recycle icon-text no-select">Recycle Bin</div>
             </div>
             <div class="group">
                 <img src="{{ url_for('static', filename='styles/images/file.png') }}" class="icon mt-4"
                     onclick="playSound('click');" data-bs-toggle="modal" data-bs-target="#explorer">
-                <div class="liminal icon-text no-select">Liminal</div>
+                <div class="liminal icon-text no-select">liminal</div>
+            </div>
+            <div class="group">
+                <img src="{{ url_for('static', filename='styles/images/music-folder.png') }}" class="icon mt-4"
+                    onclick="playSound('click');" data-bs-toggle="modal" data-bs-target="#modal-songs">
+                <div class="liminal icon-text no-select">songs</div>
             </div>
         </div>
-        <!------------->
         {% endblock %}
 
         <script>
@@ -63,6 +66,8 @@
 
         <script>
             $(document).ready(function () {
+                const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+                const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
                 $('.folder-click').click(function () {
                     $('#fullscreen-video-container').show();
                     var video = $('#fullscreen-video')[0];
@@ -108,17 +113,21 @@
                         <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
                             <img src="../static/styles/images/file-icon.png"
                                 style="width: 6%; margin-left: -0.8rem; margin-bottom: 0.3rem;">
-                            Liminal
+                            liminal
                         </h1>
                         <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
                             onclick="playSound('click')">X</button>
                     </div>
                     <div class="modal-body" id="modal-body">
                         <div class="btn-group btn-group-sm" role="group" id="options">
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">File</button>
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Edit</button>
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">View</button>
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Tools</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">File</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">Edit</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">View</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">Tools</button>
                             <button type="button" class="btn option active toggle-button" onclick="playSound('click')"
                                 data-bs-toggle="button" id="toggle-music" aria-pressed="true">Toggle music</button>
                             <button type="button" class="btn option openHelpModal"
@@ -228,11 +237,16 @@
                     </div>
                     <div class="modal-body" id="modal-body">
                         <div class="btn-group btn-group-sm" role="group" id="options">
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">File</button>
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Edit</button>
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">View</button>
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Tools</button>
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Help</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">File</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">Edit</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">View</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">Tools</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">Help</button>
                         </div>
                         <div class="row">
                             <div class="col col-md-3 no-select">
@@ -280,11 +294,16 @@
                     </div>
                     <div class="modal-body" id="modal-body">
                         <div class="btn-group btn-group-sm" role="group" id="options">
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">File</button>
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Edit</button>
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Format</button>
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">View</button>
-                            <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Help</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">File</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">Edit</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">Format</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">View</button>
+                            <button type="button" class="btn option openErrorModal"
+                                onclick="playSound('click'); playSound('error')">Help</button>
                         </div>
                         <div class="row">
                             <div class="col col-md-12">
@@ -358,6 +377,112 @@
         </div>
     </div>
 
+    <script>
+        $(document).ready(function () {
+            document.getElementById('backgroundMusic').volume = 0.5;
+            $('.space-modal').on('shown.bs.modal', function () {
+                if ($('#toggle-music').hasClass('active')) {
+                    setTimeout(function () {
+                        playRandomMusic();
+                    }, 400);
+                }
+            });
+            $('.space-modal').on('hidden.bs.modal', function () {
+                document.getElementById('backgroundMusic').pause();
+                document.getElementById('backgroundMusic').currentTime = 0;
+                const toast = bootstrap.Toast.getOrCreateInstance(document.getElementById('toast'));
+                toast.hide();
+            });
+            $(".playSong").on("click", function () {
+                index = $(this).data("index");
+                playMusic(index);
+            })
+            $("#modal-songs").on("hidden.bs.modal", function () {
+                document.getElementById('backgroundMusic').pause();
+                document.getElementById('backgroundMusic').currentTime = 0;
+                const toast = bootstrap.Toast.getOrCreateInstance(document.getElementById('toast'));
+                toast.hide();
+            })
+        });
+
+        function playRandomMusic() {
+            var audio = document.getElementById('backgroundMusic');
+            var sources = audio.getElementsByTagName('source');
+
+            var randomIndex = Math.floor(Math.random() * sources.length);
+            var randomSource = sources[randomIndex].src;
+            audio.src = randomSource;
+            audio.load();
+            audio.play();
+
+            var name = $(sources[randomIndex]).data("name")
+
+            document.querySelector("#toast .toast-body").textContent = "Now playing: " + name;
+
+            const toast = bootstrap.Toast.getOrCreateInstance(document.getElementById('toast'));
+            toast.show();
+        }
+
+        function playMusic(index) {
+            var audio = document.getElementById('backgroundMusic');
+            var sources = audio.getElementsByTagName('source');
+            var source = sources[index].src;
+            audio.src = source;
+            audio.load();
+            audio.play();
+
+            var name = $(sources[index]).data("name")
+            document.querySelector("#toast .toast-body").textContent = "Now playing: " + name;
+            const toast = bootstrap.Toast.getOrCreateInstance(document.getElementById('toast'));
+            toast.show();
+        }
+    </script>
+
+    <div class="modal" id="modal-songs" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header no-select">
+                    <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
+                        <img src="../static/styles/images/music-folder.png"
+                            style="width: 6%; margin-left: -0.8rem; margin-bottom: 0.3rem;">
+                        songs
+                    </h1>
+                    <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="playSound('click')">X</button>
+                </div>
+                <div class="modal-body no-select" id="modal-body">
+                    <div class="btn-group btn-group-sm" role="group" id="options">
+                        <button type="button" class="btn option openErrorModal"
+                            onclick="playSound('click'); playSound('error')">File</button>
+                        <button type="button" class="btn option openErrorModal"
+                            onclick="playSound('click'); playSound('error')">Edit</button>
+                        <button type="button" class="btn option openErrorModal"
+                            onclick="playSound('click'); playSound('error')">Format</button>
+                        <button type="button" class="btn option openErrorModal"
+                            onclick="playSound('click'); playSound('error')">View</button>
+                        <button type="button" class="btn option openErrorModal"
+                            onclick="playSound('click'); playSound('error')">Help</button>
+                    </div>
+                    <div class="row">
+                        {% for song in songs %}
+                        <div class="col col-md-3 no-select">
+                            <a class="playSong" data-index="{{ loop.index0 }}" data-name="{{ song }}"><img
+                                    src="{{ url_for('static', filename='styles/images/song-icon.png') }}"
+                                    class="icon mt-4" onclick="playSound('click');"></a>
+                            <div class="liminal icon-text black">
+                                {% if song|length <= 14 %} {{ song }} {% else %} <span
+                                    data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip"
+                                    data-bs-title="{{ song }}" data-bs-placement="bottom">{{ song[:14] }}..</span>
+                                    {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal" id="modal-trash" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -372,8 +497,10 @@
                 </div>
                 <div class="modal-body no-select" id="modal-body">
                     <div class="btn-group btn-group-sm" role="group" id="options">
-                        <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Empty</button>
-                        <button type="button" class="btn option openErrorModal" onclick="playSound('click'); playSound('error')">Help</button>
+                        <button type="button" class="btn option openErrorModal"
+                            onclick="playSound('click'); playSound('error')">Empty</button>
+                        <button type="button" class="btn option openErrorModal"
+                            onclick="playSound('click'); playSound('error')">Help</button>
                     </div>
                     <table class="table table-hover">
                         <tbody>
@@ -398,36 +525,19 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
 
-    <script>
-        $(document).ready(function () {
-            document.getElementById('backgroundMusic').volume = 0.5;
-            $('.space-modal').on('shown.bs.modal', function () {
-                if ($('#toggle-music').hasClass('active')) {
-                    setTimeout(function () {
-                        playRandomMusic();
-                    }, 400);
-                }
-            });
-            $('.space-modal').on('hidden.bs.modal', function () {
-                document.getElementById('backgroundMusic').pause();
-                document.getElementById('backgroundMusic').currentTime = 0;
-            });
-        });
+    <div class="toast bottom-0 end-0 position-fixed mb-5" role="alert" aria-live="assertive" aria-atomic="true" id="toast" style="margin-right: 15px;">
+        <div class="toast-header no-select">
+            <img src="../static/styles/images/icon.png" style="width: 6%; margin-left: -0.5rem; margin-bottom: 0.3rem;">
+            <span style="margin-bottom: 0.3rem;">Notification</span>
+            <button class="close-btn no-select ms-auto" data-bs-dismiss="toast" aria-label="Close"
+                        onclick="playSound('click')" style="margin-right: -10px !important; margin-bottom: 0.3rem;">X</button>
+        </div>
+        <div class="toast-body">
+        </div>
+    </div>
 
-        function playRandomMusic() {
-            var audio = document.getElementById('backgroundMusic');
-            var sources = audio.getElementsByTagName('source');
-
-            var randomIndex = Math.floor(Math.random() * sources.length);
-            var randomSource = sources[randomIndex].src;
-            console.log(randomSource);
-            audio.src = randomSource;
-            audio.load();
-            audio.play();
-        }
-    </script>
     <!-- AUDIOS -->
     <audio id="click" src="{{ url_for('static', filename='styles/audios/click.mp3') }}"></audio>
     <audio id="error-sound" src="{{ url_for('static', filename='styles/audios/error-sound-2.mp3') }}"></audio>
@@ -436,24 +546,9 @@
     <audio id="exclamation" src="{{ url_for('static', filename='styles/audios/exclamation.mp3') }}"></audio>
 
     <audio id="backgroundMusic">
-        <source src="../static/styles/audios/songs/Kero Kero Bonito - I'd Rather Sleep (320 kbps).mp3" type="audio/mp3">
-        <source src="../static/styles/audios/songs/The Caretaker - It's just a burning memory (2016) (256 kbps).mp3"
-            type="audio/mp3">
-        <source src="../static/styles/audios/songs/The Caretaker - Libet's Delay (320 kbps).mp3" type="audio/mp3">
-        <source src="../static/styles/audios/songs/Undertale OST_ 085 - Fallen Down (Reprise) (256 kbps).mp3"
-            type="audio/mp3">
-        <source src="../static/styles/audios/songs/Yume Nikki - Barracks Settlement (320 kbps).mp3" type="audio/mp3">
-        <source src="../static/styles/audios/songs/Yume Nikki OST - Snow World (320 kbps).mp3" type="audio/mp3">
-        <source src="../static/styles/audios/songs/Late afternoon drifting - The Caretaker (Stage 1) (256 kbps).mp3"
-            type="audio/mp3">
-        <source
-            src="../static/styles/audios/songs/childishly fresh eyes - the caretaker Everywhere at the End of Time (256 kbps).mp3"
-            type="audio/mp3">
-        <source src="../static/styles/audios/songs/The Day Of Night (320 kbps).mp3" type="audio/mp3">
-        <source src="../static/styles/audios/songs/Terekke - ambien (320 kbps).mp3" type="audio/mp3">
-        <source src="../static/styles/audios/songs/Hisohkah - School Rooftop (Intro) (Slowed Down) (256 kbps).mp3"
-            type="audio/mp3">
-        <source src="../static/styles/audios/songs/The Lonely Tree (320 kbps).mp3">
+        {% for song in songs %}
+        <source src="../static/styles/audios/songs/{{ song }}" type="audio/mp3" data-name="{{ song }}">
+        {% endfor %}
     </audio>
     <!-- ----------- -->
 
@@ -481,11 +576,11 @@
         });
     </script>
 
-    <div class="boot-container">
+    <!--<div class="boot-container">
         <video autoplay muted id="background-video">
             <source src="../static/styles/images/welcome.mp4" type="video/mp4">
         </video>
-    </div>
+    </div>-->
 </body>
 
 </html>
