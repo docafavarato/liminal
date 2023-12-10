@@ -9,7 +9,7 @@ function atualizarRelogio() {
     horas = horas < 10 ? '0' + horas : horas;
     minutos = minutos < 10 ? '0' + minutos : minutos;
 
-    var relogioElement = document.getElementById('relogio');
+    var relogioElement = document.getElementById('clock-text');
     relogioElement.innerHTML = '&nbsp' + horas + ':' + minutos + ' ' + periodo;
 
     setTimeout(atualizarRelogio, 600);

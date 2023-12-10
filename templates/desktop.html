@@ -25,13 +25,14 @@
 <body>
     <div class="container-fluid container-main">
         <div class="barradiv no-select">
-            <img src="{{ url_for('static', filename='styles/images/barra.png') }}" class="barra">
+            <img src="{{ url_for('static', filename='styles/images/bar-replica.png') }}" class="barra">
         </div>
 
-        <div class="relogio no-select" id="relogio"></div>
+        <div class="relogio no-select" id="relogio">
+            <span id="clock-text"></span>
+        </div>
 
-        <div class="windows" data-bs-toggle="modal" data-bs-target="#modal-bar"
-            onclick="playSound('click'); playSound('error');"></div>
+        <div class="windows" data-bs-toggle="modal" data-bs-target="#modal-bar" onclick="playSound('click');"></div>
 
         {% block body %}
         <div class="icon-group mt-3">
@@ -256,14 +257,14 @@
                             <div class="col col-md-3 no-select">
                                 <a class="openImageModal" data-image-index="{{ loop.index0 }}"
                                     data-space-id="{{ space['id'] }}">
-                                    {% if "WEB_EMBEDDED_PLAYER" not in image %}
+                                    {% if "liminalxp.github.io" not in image %}
                                     <img src="{{ image }}" class="icon mt-4" onclick="playSound('click');"></a>
                                 {% else %}
                                 <img src="../static/styles/images/media.png" class="icon mt-4"
                                     onclick="playSound('click');"></a>
                                 {% endif %}
                                 <div class="liminal icon-text black">
-                                    {% if "WEB_EMBEDDED_PLAYER" not in image %}
+                                    {% if "liminalxp.github.io" not in image %}
                                     {{ loop.index }}.png
                                     {% else %}
                                     {{ loop.index }}.mp4
@@ -321,7 +322,7 @@
                         <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
                             <img src="../static/styles/images/shell32.dll_14_226-2.png"
                                 style="width: 10%; margin-left: -0.8rem; margin-bottom: 0.3rem;">
-                            {% if "WEB_EMBEDDED_PLAYER" not in image %}
+                            {% if "liminalxp.github.io" not in image %}
                             {{ loop.index }}.png - Windows Picture and Fax Viewer
                             {% else %}
                             {{ loop.index }}.mp4 - Windows Media Player
@@ -333,7 +334,7 @@
                     <div class="modal-body no-select" id="modal-body">
                         <div class="row">
                             <div class="col col-md-12">
-                                {% if "WEB_EMBEDDED_PLAYER" not in image %}
+                                {% if "liminalxp.github.io" not in image %}
                                 <img src="{{ image }}" style="max-width: 100%; max-height: 100%;" />
                                 {% else %}
                                 <div class="video-container">
@@ -523,28 +524,59 @@
         </div>
     </div>
 
-    <!--<div class="modal" id="modal-bar" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal" id="modal-bar" data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header no-select">
+                <div class="modal-header no-select" style="height: 3rem !important;">
                     <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
                         <img src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-541.jpg?size=338&ext=jpg&ga=GA1.1.1222169770.1701734400&semt=ais"
-                            style="width: 10%; margin-left: -0.8rem; margin-bottom: 0.3rem;">
+                            style="width: 10%; margin-left: -0.8rem;">
                         User
                     </h1>
                     <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
                         onclick="playSound('click')">X</button>
                 </div>
                 <div class="modal-body no-select" id="modal-body">
-                    <div class="row">
-                        <div class="col col-md-3 no-select">
-
+                    <div class="menu-1">
+                        <div class="row">
+                            <div class="col col-md-12 no-select mb-2">
+                                <img src="../static/styles/images/icwconn1.exe_14_201-2.png" style="width: 15%;">
+                                Internet
+                            </div>
+                            <div class="col col-md-12 no-select mb-2">
+                                <img src="../static/styles/images/icwconn1.exe_14_201-2.png" style="width: 15%;">
+                                Email
+                            </div>
+                            <div class="col col-md-12 no-select mb-2">
+                                <img src="../static/styles/images/icwconn1.exe_14_201-2.png" style="width: 15%;">
+                                Notepad
+                            </div>
+                            <div class="col col-md-12 no-select mb-2">
+                                <img src="../static/styles/images/icwconn1.exe_14_201-2.png" style="width: 15%;">
+                                Windows Media Player
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-2">
+                        <div class="row">
+                            <div class="col col-md-12 no-select mb-2">
+                                <img src="../static/styles/images/icwconn1.exe_14_201-2.png" style="width: 15%;">
+                                My Documents
+                            </div>
+                            <div class="col col-md-12 no-select mb-2">
+                                <img src="../static/styles/images/icwconn1.exe_14_201-2.png" style="width: 15%;">
+                                My Recent Documents
+                            </div>
+                            <div class="col col-md-12 no-select mb-2">
+                                <img src="../static/styles/images/icwconn1.exe_14_201-2.png" style="width: 15%;">
+                                My Pictures
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>-->
+    </div>
 
     </div>
 
@@ -566,6 +598,7 @@
     <audio id="pop-up-blocked" src="{{ url_for('static', filename='styles/audios/pop-up-blocked.mp3') }}"></audio>
     <audio id="error" src="{{ url_for('static', filename='styles/audios/error.mp3') }}"></audio>
     <audio id="exclamation" src="{{ url_for('static', filename='styles/audios/exclamation.mp3') }}"></audio>
+    <audio id="start" src="../static/styles/audios/windows-xp-startup-sound.mp3"></audio>
 
     <audio id="backgroundMusic">
         {% for song in songs %}
@@ -581,7 +614,7 @@
     </script>
 
     <div id="fullscreen-video-container" class="fullscreen-container">
-        <video id="fullscreen-video" autoplay onended="closeFullscreen()">
+        <video id="fullscreen-video" onended="closeFullscreen()">
             <source src="../static/styles/images/y2mate.bz - Windows XP Horror Edition (online-video-cutter.com).mp4"
                 type="video/mp4">
         </video>
@@ -598,11 +631,29 @@
         });
     </script>
 
-   <!--<div class="boot-container">
-        <video autoplay muted id="background-video">
+    <!--<div class="boot-container">
+        <video autoplay muted id="intro-video" loop onclick="startMainVideo();">
+            <source src="../static/styles/images/intro.mp4" type="video/mp4">
+        </video>
+        <video id="background-video" style="display: none;">
             <source src="../static/styles/images/welcome.mp4" type="video/mp4">
         </video>
-    </div>--> 
+        <script>
+            function startMainVideo() {
+                document.getElementById('intro-video').style.display = 'none';
+
+                var mainVideo = document.getElementById('background-video');
+
+                mainVideo.style.display = 'block';
+
+                mainVideo.play();
+                
+                setTimeout(function () {
+                    playSound('start')
+                }, 900);
+            }
+        </script>
+    </div> -->
 </body>
 
 </html>
