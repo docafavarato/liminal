@@ -36,7 +36,8 @@ while True:
             spaceChoice = int(input("> "))
             mediaList = spaces[spaceChoice]["media"]
             
-            mediaInput = input("Media URLs (separated by space): ")
+            print(f"[*] - Selected space: {spaces[spaceChoice]['name']}")
+            mediaInput = input("Media URL's (separated by space): ")
             mediaUrls = mediaInput.split()
 
             mediaList.extend(mediaUrls)

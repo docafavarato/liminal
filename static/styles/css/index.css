@@ -18,6 +18,10 @@ body {
     padding: 0px;
 }
 
+.btn {
+    cursor: url("../images/pointer.cur"), auto !important;
+}
+
 .overlay {
     display: none;
     position: fixed;
@@ -179,6 +183,7 @@ a {
     background-color: none !important;
     border: none !important;
     transition-duration: 0s !important;
+    cursor: url("../images/pointer.cur"), auto !important;
 }
 
 .option:hover {
@@ -313,6 +318,10 @@ html {
 #modal-bar .modal-body {
     display: flex;
     flex-direction: row;
+}
+
+.btn-group {
+    width: 107% !important;
 }
 
 .modal-backdrop, .modal-backdrop.fade.in {
