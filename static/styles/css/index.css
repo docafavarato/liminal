@@ -369,7 +369,18 @@ html {
 .menu-2 {
     margin-left: 1rem;
     width: 40% !important;
-    background-color: #d0e4fc !important;
+}
+
+#modal-bar .modal-body .menu {
+    margin-top: -0.6rem !important;
+}
+
+.menu-2 .col {
+    max-width: 95% !important;
+}
+
+.menu-1 .col {
+    max-width: 92% !important;
 }
 
 .menu-1 .col:hover,
@@ -431,6 +442,14 @@ html {
     cursor: url("../images/pointer.cur"), auto !important;
 }
 
+#modal-bar .modal-content {
+    background: linear-gradient(
+        to right,
+        #ffffff 56%,
+        #d0e4fc 44%
+    ) !important;
+}
+
 #logoff {
     margin-right: -0.6rem;
     width: 6rem !important;
@@ -439,4 +458,42 @@ html {
 #turnoff {
     margin-right: -0.6rem;
     width: 10rem !important;
+}
+
+.separator {
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    left: 56%;
+    top: 0;
+    border-left: solid #3a3aff5e 1px;
+}
+
+.menu-1-separator {
+    margin-top: -10px !important;
+    height: 7.5px;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.1) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    background-clip: content-box;
+}
+
+.menu-2-separator {
+    margin-left: -10px !important;
+    margin-top: -6px !important;
+    height: 7.5px;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      #87b3e2b5 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    background-clip: content-box;
 }
