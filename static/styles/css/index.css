@@ -18,6 +18,15 @@ body {
     padding: 0px;
 }
 
+.containment {
+    display: block;
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 95vh;
+    width: 98vw;
+}
+
 .btn {
     cursor: url("../images/pointer.cur"), auto !important;
 }
@@ -46,9 +55,9 @@ button {
     bottom: -2px;
     width: 150% !important;
     margin-left: -1rem !important;
-    height: 2.4rem !important; 
+    height: 2.4rem !important;
     display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .relogio {
@@ -74,14 +83,12 @@ button {
     align-items: flex-start;
 }
 
-.recycle{
-    text-shadow: 0.5px 0 #000000, -0.5px 0 #000000, 0 0.5px #000000, 0 -0.5px #000000,
-    0.5px 0.5px #000000, -0.5px -0.5px #000000, 0.5px -0.5px #000000, -0.5px 0.5px #000000;
+.recycle {
+    text-shadow: 0.5px 0 #000000, -0.5px 0 #000000, 0 0.5px #000000, 0 -0.5px #000000, 0.5px 0.5px #000000, -0.5px -0.5px #000000, 0.5px -0.5px #000000, -0.5px 0.5px #000000;
 }
 
-.songs{
-    text-shadow: 0.5px 0 #000000, -0.5px 0 #000000, 0 0.5px #000000, 0 -0.5px #000000,
-    0.5px 0.5px #000000, -0.5px -0.5px #000000, 0.5px -0.5px #000000, -0.5px 0.5px #000000;
+.songs {
+    text-shadow: 0.5px 0 #000000, -0.5px 0 #000000, 0 0.5px #000000, 0 -0.5px #000000, 0.5px 0.5px #000000, -0.5px -0.5px #000000, 0.5px -0.5px #000000, -0.5px 0.5px #000000;
 }
 
 .icon {
@@ -105,11 +112,25 @@ button {
 .modal-header {
     color: white;
     border-radius: 0px !important;
-    background-color: rgb(0, 87, 229) !important;
+    background: linear-gradient(to bottom,
+            #1868ce 0%,
+            #0e60cb 12%,
+            #0e60cb 20%,
+            #1164cf 32%,
+            #1667cf 33%,
+            #1b6cd3 47%,
+            #1e70d9 54%,
+            #2476dc 60%,
+            #297ae0 65%,
+            #3482e3 77%,
+            #3786e5 79%,
+            #428ee9 90%,
+            #4791eb 100%) !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     height: 2rem;
 }
+
 
 .modal-footer button {
     margin: auto !important;
@@ -144,6 +165,14 @@ button {
     color: white;
     line-height: 1rem !important;
     background-color: red;
+    background-image: radial-gradient(
+      circle at 90% 90%,
+      #cc4600 0%,
+      #dc6527 55%,
+      #cd7546 70%,
+      #ffccb2 90%,
+      white 100%
+    );
     height: 1.5rem;
     width: 1.5rem;
     cursor: url("../images/pointer.cur"), auto !important;
@@ -178,7 +207,7 @@ a {
 
 .option {
     line-height: 0.5rem !important;
-    border-radius: 0px !important; 
+    border-radius: 0px !important;
     height: 1.5rem !important;
     background-color: none !important;
     border: none !important;
@@ -192,7 +221,7 @@ a {
 }
 
 .close-btn:hover {
-    filter: grayscale(15%);
+    filter: brightness(120%);
 }
 
 .modal-header:active {
@@ -216,7 +245,7 @@ a {
 }
 
 html {
-    text-shadow: 4px 4px 5px rgba(0,0,0,0.6) !important;
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6) !important;
 }
 
 .toggle-button.active {
@@ -237,7 +266,7 @@ html {
     margin-bottom: -2.6rem;
 }
 
-.windows:hover{
+.windows:hover {
     filter: brightness(120%);
 }
 
@@ -255,9 +284,9 @@ html {
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1920px; 
+    width: 1920px;
     height: 1080px;
-    object-fit: cover; 
+    object-fit: cover;
     z-index: -1;
 }
 
@@ -266,9 +295,9 @@ html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100vw; 
+    width: 100vw;
     height: 100vh;
-    object-fit: cover; 
+    object-fit: cover;
     z-index: -1;
 }
 
@@ -287,7 +316,7 @@ html {
 }
 
 .custom-tooltip .tooltip-inner {
-    background-color: #ffffff; 
+    background-color: #ffffff;
     color: #000000;
 }
 
@@ -324,19 +353,90 @@ html {
     width: 107% !important;
 }
 
-.modal-backdrop, .modal-backdrop.fade.in {
+.modal-backdrop,
+.modal-backdrop.fade.in {
     opacity: 0.0 !important;
-} 
+}
 
 .col-app-2 {
     background-color: #d0e4fc !important;
 }
 
-.menu-1, .menu-2 {
-    width: 50% !important;
+.menu-1 {
+    width: 60% !important;
 }
 
-.menu-1 .col:hover, .menu-2 .col:hover {
-    background-color: #3074cc !important;
+.menu-2 {
+    margin-left: 1rem;
+    width: 40% !important;
+    background-color: #d0e4fc !important;
+}
+
+.menu-1 .col:hover,
+.menu-2 .col:hover {
+    background-color: #2F71CD !important;
     color: white !important;
+    cursor: url("../images/pointer.cur"), auto !important;
+}
+
+.menu-1,
+.menu-2 {
+    text-shadow: none !important;
+    font-size: 14px !important;
+}
+
+.liminal-image {
+    min-width: 462px !important;
+}
+
+#user_pic {
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
+#modal-bar .modal-footer {
+    height: 2.5rem !important;
+    text-shadow: none !important;
+    color: white !important;
+    border-radius: 0px !important;
+    background: linear-gradient(
+      to bottom,
+      #1868ce 0%,
+      #0e60cb 12%,
+      #0e60cb 20%,
+      #1164cf 32%,
+      #1667cf 33%,
+      #1b6cd3 47%,
+      #1e70d9 54%,
+      #2476dc 60%,
+      #297ae0 65%,
+      #3482e3 77%,
+      #3786e5 79%,
+      #428ee9 90%,
+      #4791eb 100%
+    ) !important;
+    box-shadow: inset 0 -1px 1px #0e60cb !important;
+} 
+
+#modal-bar .modal-footer .col:hover {
+    background-color: #2F71CD !important;
+}
+
+#modal-bar .modal-footer .row {
+    margin-top: -0.3rem !important;
+    font-size: 13px;
+}
+
+#modal-bar .modal-footer .row {
+    cursor: url("../images/pointer.cur"), auto !important;
+}
+
+#logoff {
+    margin-right: -0.6rem;
+    width: 6rem !important;
+}
+
+#turnoff {
+    margin-right: -0.6rem;
+    width: 10rem !important;
 }
