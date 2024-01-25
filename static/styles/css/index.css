@@ -244,9 +244,9 @@ a {
     object-fit: cover;
 }
 
-html {
+/*html {
     text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6) !important;
-}
+}*/
 
 .toggle-button.active {
     background-color: rgb(20, 20, 248) !important;
