@@ -58,7 +58,7 @@
                     grid: [100, 100]
                 });
                 $(".modal").draggable({
-                    handle: ".modal-header"
+                    handle: ".modal-header",
                 });
             });
         </script>
@@ -360,7 +360,7 @@
                             {% endif %}
                         </h1>
                         <button class="close-btn no-select closeImageModal" data-bs-dismiss="modal" aria-label="Close"
-                            onclick="playSound('click'); stopVideo('{{ space['id'] }}-{{ space['media'].index(image) }}')">X</button>
+                            onclick="playSound('click'); stopVideo(`{{ space['id'] }}-{{ space['media'].index(image) }}`)">X</button>
                     </div>
                     <div class="modal-body no-select" id="modal-body">
                         <div class="row">
