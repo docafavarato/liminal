@@ -497,3 +497,11 @@ a {
     border-bottom: 3px solid transparent;
     background-clip: content-box;
 }
+
+.modal-dialog-scrollable{
+    overflow-y: initial !important
+}
+.modal-body-scrollable {
+    max-height: 50vh !important;
+    overflow-y: auto !important;
+}

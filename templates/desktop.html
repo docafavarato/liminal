@@ -124,7 +124,7 @@
 
         <div class="modal" id="explorer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content no-select">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
@@ -135,7 +135,7 @@
                         <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
                             onclick="playSound('click')">X</button>
                     </div>
-                    <div class="modal-body" id="modal-body">
+                    <div class="modal-body modal-body-scrollable" id="modal-body">
                         <div class="btn-group btn-group-sm" role="group" id="options">
                             <button type="button" class="btn option openErrorModal"
                                 onclick="playSound('click'); playSound('error')">File</button>
@@ -241,7 +241,7 @@
         {% for space in spaces %}
         <div class="modal space-modal" id="modal-space-{{ space['id'] }}" data-bs-backdrop="static"
             data-bs-keyboard="false" data-total-images="{{ space['media']|length }}">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                 <div class="modal-content no-select">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
@@ -252,7 +252,7 @@
                         <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
                             onclick="playSound('click')">X</button>
                     </div>
-                    <div class="modal-body" id="modal-body">
+                    <div class="modal-body modal-body-scrollable" id="modal-body">
                         <div class="btn-group btn-group-sm" role="group" id="options">
                             <button type="button" class="btn option openErrorModal"
                                 onclick="playSound('click'); playSound('error')">File</button>
@@ -273,10 +273,10 @@
                                 <div class="liminal icon-text black">description.txt</div>
                             </div>
                             {% for media in space['media'] %}
-                            <div class="col col-md-3 no-select">
+                            <div class="col col-md-2 no-select">
                                 <a class="openImageModal" data-image-index="{{ loop.index0 }}"
                                     data-space-id="{{ space['id'] }}">
-                                {% if "liminalxp.github.io" not in media and ".mp3" not in media %}
+                                    {% if "liminalxp.github.io" not in media and ".mp3" not in media %}
                                     <img src="{{ media }}" class="icon mt-4" onclick="playSound('click');"></a>
                                 {% elif "liminalxp.github.io" in media %}
                                 <img src="../static/styles/images/media.png" class="icon mt-4"
@@ -302,7 +302,7 @@
             </div>
         </div>
         <div class="modal" id="modal-notepad-{{ space['id'] }}" data-bs-backdrop="static" data-bs-keyboard="false">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header no-select">
                         <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
@@ -313,7 +313,7 @@
                         <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
                             onclick="playSound('click')">X</button>
                     </div>
-                    <div class="modal-body" id="modal-body">
+                    <div class="modal-body modal-body-scrollable" id="modal-body">
                         <div class="btn-group btn-group-sm" role="group" id="options">
                             <button type="button" class="btn option openErrorModal"
                                 onclick="playSound('click'); playSound('error')">File</button>
@@ -458,7 +458,7 @@
             var sources = audio.getElementsByTagName('source');
             var source = sources[index].src;
             audio.src = source;
-            audio.load(); 
+            audio.load();
             audio.play();
 
             var name = $(sources[index]).data("name")
@@ -468,7 +468,7 @@
         }
     </script>
     <div class="modal" id="modal-songs" data-bs-backdrop="static" data-bs-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header no-select">
                     <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
@@ -479,7 +479,7 @@
                     <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
                         onclick="playSound('click')">X</button>
                 </div>
-                <div class="modal-body no-select" id="modal-body">
+                <div class="modal-body no-select modal-body-scrollable" id="modal-body">
                     <div class="btn-group btn-group-sm" role="group" id="options">
                         <button type="button" class="btn option openErrorModal"
                             onclick="playSound('click'); playSound('error')">File</button>
@@ -512,7 +512,7 @@
         </div>
     </div>
     <div class="modal" id="modal-trash" data-bs-backdrop="static" data-bs-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header no-select">
                     <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
@@ -523,7 +523,7 @@
                     <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
                         onclick="playSound('click')">X</button>
                 </div>
-                <div class="modal-body no-select" id="modal-body">
+                <div class="modal-body no-select modal-body-scrollable" id="modal-body">
                     <div class="btn-group btn-group-sm" role="group" id="options">
                         <button type="button" class="btn option openErrorModal"
                             onclick="playSound('click'); playSound('error')">Empty</button>
@@ -566,24 +566,29 @@
                 <div class="modal-body no-select" id="modal-body">
                     <div class="menu-1 menu">
                         <div class="row">
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/icwconn1.exe_14_201-2.png" style="width: 12%;">
                                 <strong>Internet</strong>
                             </div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/msoeres.dll_14_2-3.png" style="width: 12%;">
                                 <strong>Email</strong>
                             </div>
                             <div class="menu-1-separator"></div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/NOTEPAD.EXE_14_2-6.png" style="width: 12%;">
                                 Notepad
                             </div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/setup_wm.exe_14_71-6.png" style="width: 12%;">
                                 Windows Media Player
                             </div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/Messenger.png" style="width: 12%;">
                                 Windows Messenger
                             </div>
@@ -592,49 +597,60 @@
                     <div class="separator"></div>
                     <div class="menu-2 menu">
                         <div class="row">
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/shell32.dll_14_235-8.png" style="width: 13%;">
                                 <strong>My Documents</strong>
                             </div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/mstask.dll_14_100-6.png" style="width: 13%;">
                                 <strong>My Recent Documents</strong>
                             </div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/srchui.dll_14_236-7.png" style="width: 13%;">
                                 <strong>My Pictures</strong>
                             </div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/shell32.dll_14_237-9.png" style="width: 13%;">
                                 <strong>My Music</strong>
                             </div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/sprb0401.dll_14_10702_1025-9.png" style="width: 13%;">
                                 <strong>My Computer</strong>
                             </div>
                             <div class="menu-2-separator"></div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/Control_Panel_XP.webp" style="width: 13%;">
                                 Control Panel
                             </div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/moricons.dll_14_114-8.png" style="width: 13%;">
                                 Set Program Access and Defaults
                             </div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/shell32.dll_14_138-4.png" style="width: 13%;">
                                 Printers and Faxes
                             </div>
                             <div class="menu-2-separator"></div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/shell32.dll_14_24-0.png" style="width: 13%;">
                                 Help and Support
                             </div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/shell32.dll_14_323-7.png" style="width: 13%;">
                                 Search
                             </div>
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2" onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
+                                onclick="playSound('click'); playSound('error')">
                                 <img src="../static/styles/images/shell32.dll_14_160-0.png" style="width: 13%;">
                                 Run...
                             </div>
