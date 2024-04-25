@@ -1,6 +1,6 @@
 import json
 import os
-
+import random
 
 with open("data.json", "r") as f:
     spaces = f.read()
@@ -15,7 +15,8 @@ while True:
     print("[1] - Create new space")
     print("[2] - Insert data into space")
     print("[3] - List spaces")
-    print("[4] - Save")
+    print("[4] - Shuffle JSON")
+    print("[5] - Save")
     choice = int(input("> "))
     os.system("cls")
     match choice:
@@ -48,6 +49,10 @@ while True:
                 print(f"-{i}- {space['name']}")
 
         case 4:
+            random.shuffle(spaces)
+            print("[*] - Shuffled")
+
+        case 5:
             with open("data.json", "w", encoding="utf-8") as output:
                 json.dump(spaces, output, ensure_ascii=False, indent=4)
             break
