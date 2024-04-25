@@ -22,6 +22,13 @@
 </head>
 
 <body>
+    <script>
+        function changeWallpaper() {
+            var body = document.getElementsByTagName('body')[0];
+            var images = ["Follow.jpg", "Azul.jpg", "Red moon desert.jpg", "Stonehenge.jpg", "Wind.jpg"]
+            body.style.backgroundImage = 'url("../static/styles/images/background/' + images[Math.floor(Math.random()*images.length)];
+        }
+    </script>
     <div class="containment"></div>
     <div class="container-fluid container-main">
         <div class="barradiv no-select">
@@ -47,6 +54,11 @@
                 <img src="{{ url_for('static', filename='styles/images/music-folder.png') }}" class="icon mt-4"
                     onclick="playSound('click');" data-bs-toggle="modal" data-bs-target="#modal-songs">
                 <div class="songs icon-text no-select">songs</div>
+            </div>
+            <div class="group">
+                <img src="{{ url_for('static', filename='styles/images/console.dll_14_1-2.png') }}" class="icon mt-4"
+                    onclick="playSound('click'); changeWallpaper();" id="change-wallpaper">
+                <div class="songs icon-text no-select">wallpapers.exe</div>
             </div>
         </div>
         {% endblock %}
@@ -294,14 +306,14 @@
                                 <img src="../static/styles/images/song-icon.png" class="icon mt-4 play-space-sound"
                                     onclick="playSound('click'); stopSpaceSound(); playSound('{{ media }}')"></a>
                                 {% endif %}
-                                <div class="liminal icon-text black" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip"
-                                data-bs-title="{{ media }}" data-bs-placement="bottom"">
+                                <div class="liminal icon-text black" data-bs-custom-class="custom-tooltip"
+                                    data-bs-toggle="tooltip" data-bs-title="{{ media }}" data-bs-placement="bottom">
                                     {% if "liminalxp.github.io" not in media and ".mp3" not in media %}
-                                    {{ loop.index }}.png
+                                    {{ randomString(2, 3) }}.png
                                     {% elif ".mp3" in media %}
                                     {{ media[:7] }}..
                                     {% else %}
-                                    {{ loop.index }}.mp4
+                                    {{ randomString(2, 3) }}.mp4
                                     {% endif %}
                                 </div>
                             </div>
@@ -355,6 +367,7 @@
             }
         </script>
         {% for image in space['media'] %}
+        {% if not ".mp3" in image %}
         <div class="modal" id="modal-image-{{ space['id'] }}-{{ space['media'].index(image) }}"
             data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered">
@@ -392,6 +405,7 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         {% endfor %}
         {% endfor %}
         <div class="modal" id="modal-help" data-bs-backdrop="static" data-bs-keyboard="false">

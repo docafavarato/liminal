@@ -9,7 +9,7 @@ html {
 
 body {
     overflow: hidden;
-    background-image: url("../images/xp.jpg") !important;
+    background-image: url("../images/xp.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
