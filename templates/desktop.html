@@ -235,8 +235,14 @@
                         }
                     }
                 });
-
             });
+
+            function stopSpaceSound() {
+                document.querySelectorAll(".liminal-song").forEach(liminal_song => {
+                    liminal_song.pause();
+                    liminal_song.currentTime = 0;
+                })
+            }
         </script>
         {% for space in spaces %}
         <div class="modal space-modal" id="modal-space-{{ space['id'] }}" data-bs-backdrop="static"
@@ -250,7 +256,7 @@
                             {{ space['name'] }}
                         </h1>
                         <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
-                            onclick="playSound('click')">X</button>
+                            onclick="playSound('click'); stopSpaceSound()">X</button>
                     </div>
                     <div class="modal-body modal-body-scrollable" id="modal-body">
                         <div class="btn-group btn-group-sm" role="group" id="options">
@@ -274,22 +280,26 @@
                             </div>
                             {% for media in space['media'] %}
                             <div class="col col-md-2 no-select">
-                                <a class="openImageModal" data-image-index="{{ loop.index0 }}"
-                                    data-space-id="{{ space['id'] }}">
+                                <a class="
+                                {% if not '.mp3' in media %}
+                                    openImageModal
+                                {% endif %}
+                                " data-image-index="{{ loop.index0 }}" data-space-id="{{ space['id'] }}">
                                     {% if "liminalxp.github.io" not in media and ".mp3" not in media %}
                                     <img src="{{ media }}" class="icon mt-4" onclick="playSound('click');"></a>
                                 {% elif "liminalxp.github.io" in media %}
                                 <img src="../static/styles/images/media.png" class="icon mt-4"
                                     onclick="playSound('click');"></a>
-                                {% else %}
-                                <img src="../static/styles/images/song-icon.png" class="icon mt-4"
-                                    onclick="playSound('click'); playSound('{{ media }}')"></a>
+                                {% elif ".mp3" in media %}
+                                <img src="../static/styles/images/song-icon.png" class="icon mt-4 play-space-sound"
+                                    onclick="playSound('click'); stopSpaceSound(); playSound('{{ media }}')"></a>
                                 {% endif %}
-                                <div class="liminal icon-text black">
-                                    {% if "liminalxp.github.io" not in media %}
+                                <div class="liminal icon-text black" data-bs-custom-class="custom-tooltip" data-bs-toggle="tooltip"
+                                data-bs-title="{{ media }}" data-bs-placement="bottom"">
+                                    {% if "liminalxp.github.io" not in media and ".mp3" not in media %}
                                     {{ loop.index }}.png
                                     {% elif ".mp3" in media %}
-                                    {{ loop.index }}.mp3
+                                    {{ media[:7] }}..
                                     {% else %}
                                     {{ loop.index }}.mp4
                                     {% endif %}
@@ -417,12 +427,19 @@
                     }, 100);
                 }
             });
+
             $('.space-modal').on('hidden.bs.modal', function () {
                 document.getElementById('backgroundMusic').pause();
                 document.getElementById('backgroundMusic').currentTime = 0;
                 const toast = bootstrap.Toast.getOrCreateInstance(document.getElementById('toast'));
                 toast.hide();
             });
+
+            $(".play-space-sound").on("click", function () {
+                document.getElementById('backgroundMusic').pause();
+                document.getElementById('backgroundMusic').currentTime = 0;
+            })
+
             $(".playSong").on("click", function () {
                 index = $(this).data("index");
                 playMusic(index);
@@ -699,7 +716,7 @@
         {% endfor %}
     </audio>
     {% for song in songs %}
-    <audio id="{{ song }}" src="../static/styles/audios/songs/{{ song }}"></audio>
+    <audio id="{{ song }}" src="../static/styles/audios/songs/{{ song }}" class="liminal-song"></audio>
     {% endfor %}
     <!-- ----------- -->
     <script>
