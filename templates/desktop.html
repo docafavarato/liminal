@@ -25,7 +25,7 @@
     <script>
         function changeWallpaper() {
             var body = document.getElementsByTagName('body')[0];
-            var images = ["Follow.jpg", "Azul.jpg", "Red moon desert.jpg", "Stonehenge.jpg", "Wind.jpg"]
+            var images = ["Follow.jpg", "Azul.jpg", "Red moon desert.jpg", "Stonehenge.jpg", "Wind.jpg", "xp.jpg"]
             body.style.backgroundImage = 'url("../static/styles/images/background/' + images[Math.floor(Math.random()*images.length)];
         }
     </script>
@@ -57,7 +57,7 @@
             </div>
             <div class="group">
                 <img src="{{ url_for('static', filename='styles/images/console.dll_14_1-2.png') }}" class="icon mt-4"
-                    onclick="playSound('click'); changeWallpaper();" id="change-wallpaper">
+                    onclick="playSound('click');" ondblclick="changeWallpaper()" id="change-wallpaper">
                 <div class="songs icon-text no-select">wallpapers.exe</div>
             </div>
         </div>
@@ -586,7 +586,7 @@
     </div>
     <div class="modal" id="modal-bar" data-bs-keyboard="false">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content modal-bar-content">
                 <div class="modal-header no-select" style="height: 3rem !important;">
                     <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
                         <img src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-541.jpg?size=338&ext=jpg&ga=GA1.1.1222169770.1701734400&semt=ais"

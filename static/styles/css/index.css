@@ -505,3 +505,11 @@ a {
     max-height: 50vh !important;
     overflow-y: auto !important;
 }
+
+.modal-bar-content {
+    position: fixed !important;
+    bottom: 35px !important;
+    left: 0 !important;
+    transform: translate(0, 0) !important;
+    max-width: 460px;
+}
