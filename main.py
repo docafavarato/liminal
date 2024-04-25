@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, url_for, redirect
 import json
+import random
 
 app = Flask(__name__)
 
@@ -13,10 +14,12 @@ def desktop():
     with open("data.json") as f:
         data = f.read()
     spaces = json.loads(data)
+    random.shuffle(spaces)
 
     path = "static/styles/audios/songs"
     files = os.listdir(path)
     songs = [file for file in files]
+    random.shuffle(songs)
   
     return render_template("desktop.html", spaces=spaces, songs=songs)
 
