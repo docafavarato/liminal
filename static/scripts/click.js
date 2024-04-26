@@ -2,7 +2,7 @@ function playSound(filename) {
     var audio = document.getElementById(filename);
     audio.play();
 
-    ignore = ["click", "error", "pop-up-blocked"]
+    ignore = ["click", "error", "pop-up-blocked", "exclamation", "error-sound"]
 
     if (!ignore.includes(filename)) {
         document.querySelector("#toast .toast-body").textContent = "Now playing: " + filename;
@@ -22,4 +22,16 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+});
+
+function autoResize() {
+    var textareas = document.querySelectorAll('textarea');
+    textareas.forEach(textarea => {
+        textarea.style.height = "";
+        textarea.style.height = textarea.scrollHeight + "px";
+    });
+}
+
+$("textarea").each(function () {
+    this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
 });

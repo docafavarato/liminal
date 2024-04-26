@@ -260,7 +260,7 @@
         <div class="modal space-modal" id="modal-space-{{ space['id'] }}" data-bs-backdrop="static"
             data-bs-keyboard="false" data-total-images="{{ space['media']|length }}">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-                <div class="modal-content no-select">
+                <div class="modal-content no-select" style="max-width: 500px;">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
                             <img src="../static/styles/images/icon.png"
@@ -306,14 +306,37 @@
                                 <img src="../static/styles/images/song-icon.png" class="icon mt-4 play-space-sound"
                                     onclick="playSound('click'); stopSpaceSound(); playSound('{{ media }}')"></a>
                                 {% endif %}
-                                <div class="liminal icon-text black" data-bs-custom-class="custom-tooltip"
-                                    data-bs-toggle="tooltip" data-bs-title="{{ media }}" data-bs-placement="bottom">
+                                {% set random_name = randomString(2, 10) %}
+                                <div class="liminal icon-text black" 
+                                {% if random_name|length > 4 %}
+                                    data-bs-custom-class="custom-tooltip"
+                                    data-bs-toggle="tooltip" data-bs-title="
+                                    
                                     {% if "liminalxp.github.io" not in media and ".mp3" not in media %}
-                                    {{ randomString(2, 3) }}.png
+                                        {{ random_name }}.png
                                     {% elif ".mp3" in media %}
-                                    {{ media[:7] }}..
+                                        {{ media }}.mp3
                                     {% else %}
-                                    {{ randomString(2, 3) }}.mp4
+                                        {{ random_name }}.mp4
+                                    {% endif %}
+                                    
+                                    " data-bs-placement="bottom"
+                                {% endif %}
+                                >
+                                    {% if "liminalxp.github.io" not in media and ".mp3" not in media %}
+                                        {% if random_name|length > 4 %}
+                                            {{ random_name[:4] }}..
+                                        {% else %}
+                                            {{ random_name }}.png
+                                        {% endif %}
+                                    {% elif ".mp3" in media %}
+                                        {{ media[:7] }}..
+                                    {% else %}
+                                        {% if random_name|length > 4 %}
+                                            {{ random_name[:4] }}..
+                                        {% else %}
+                                            {{ random_name }}.mp4
+                                        {% endif %}
                                     {% endif %}
                                 </div>
                             </div>
@@ -350,7 +373,9 @@
                         </div>
                         <div class="row">
                             <div class="col col-md-12">
-                                <div class="liminal icon-text black">{{ space["description"] }}</div>
+                                <div class="liminal icon-text black">
+                                    <span class="textarea" style="width: 100%;" role="textbox" contenteditable spellcheck="false">{{ space["description"] }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
