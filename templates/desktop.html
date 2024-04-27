@@ -60,6 +60,16 @@
                     onclick="playSound('click');" ondblclick="changeWallpaper()" id="change-wallpaper">
                 <div class="songs icon-text no-select">wallpapers.exe</div>
             </div>
+            <div class="group">
+                <img src="{{ url_for('static', filename='styles/images/sprb0401.dll_14_10601_1025-3.png') }}" class="icon mt-4"
+                    onclick="playSound('click'); playMario();" id="change-wallpaper">
+                <div class="songs icon-text no-select">clickme.exe</div>
+            </div>
+        </div>
+        <div class="mario-container">
+        <video style="display: none;" id="mario">
+            <source src="../static/styles/images/Hmm Oh NiCe CoMpUtEr YoU gOt HeRe.mp4" type="video/mp4">
+        </video>
         </div>
         {% endblock %}
         <script>
@@ -134,7 +144,7 @@
             </div>
         </div>
 
-        <div class="modal" id="explorer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal" id="explorer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content no-select">
@@ -749,6 +759,7 @@
     <audio id="error" src="{{ url_for('static', filename='styles/audios/error.mp3') }}"></audio>
     <audio id="exclamation" src="{{ url_for('static', filename='styles/audios/exclamation.mp3') }}"></audio>
     <audio id="start" src="../static/styles/audios/windows-xp-startup-sound.mp3"></audio>
+    <audio id="trumpet" src="../static/styles/images/The Boiled One Phenomenon_ PHEN-228 Trumpet Sound_G-Rq8iSkDwU.mp3"></audio>
     <audio id="backgroundMusic">
         {% for song in songs %}
         <source src="../static/styles/audios/songs/{{ song }}" type="audio/mp3" data-name="{{ song }}">

@@ -526,3 +526,35 @@ a {
 .textarea:focus {
     outline: none !important;
 }
+
+.modal-content {
+    resize: both !important;
+    min-height: 20vh;
+    min-width: 350px !important;
+    max-height: 80vh !important;
+}
+
+
+/* MODAIS MULTIPLOS */
+.modal-open {
+    width: 1px !important;
+}
+
+.modal-backdrop {
+    display: none !important;
+}
+
+.modal {
+    height: max-content !important;
+    width: fit-content !important;
+}
+/* --------------------------------------------------- */
+
+#mario {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: auto;
+}
