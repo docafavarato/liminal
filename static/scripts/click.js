@@ -1,16 +1,3 @@
-function playMario() {
-    document.getElementById("mario").style.display = "block";
-    document.getElementById("mario").play();
-    document.getElementById("trumpet").play();
-    document.body.style.backgroundImage = 'url("../static/styles/images/ty26hmpfe3f51.jpg")';
-    document.body.style.backgroundRepeat = "repeat";
-    document.body.style.backgroundSize = "80px 80px";
-    document.getElementById("error-sound").play();
-
-    setTimeout(function() {
-        window.close();
-    }, 5800);
-}
 
 document.addEventListener('DOMContentLoaded', function () {
     var modals = document.querySelectorAll(".modal");

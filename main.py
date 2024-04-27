@@ -29,6 +29,7 @@ def desktop():
   
     return render_template("desktop.html", spaces=spaces, songs=songs, randomString=randomString)
 
+
 if __name__ == '__main__':
     app.run(debug=True)
 
