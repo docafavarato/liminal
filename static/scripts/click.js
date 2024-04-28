@@ -1,4 +1,12 @@
 
+$(document).ready(function() {
+    document.querySelectorAll(".trigger-modal-video").forEach(trigger => {
+        trigger.addEventListener("click", function() {
+            document.getElementById("modal-video-" + trigger.id.split("video-")[1].split("-")[0] + "-" + trigger.id.split("index-")[1]).play();
+        });
+    });
+});
+
 document.addEventListener('DOMContentLoaded', function () {
     var modals = document.querySelectorAll(".modal");
     
