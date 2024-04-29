@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     modal.style.top = (mouseY - 20) + "px";
                     break;
                 case 2:
-                    modal.style.left = (mouseX + 200) + "px";
+                    modal.style.left = (mouseX + 100) + "px";
                     modal.style.top = (mouseY - 20) + "px";
             }
         });
@@ -91,4 +91,21 @@ function autoResize() {
 
 $("textarea").each(function () {
     this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
+});
+
+
+
+$(document).ready(function () {
+    $('#modal-bar').on('shown.bs.modal', function (e) {
+        var menuBackdrop = document.querySelector("#menu-backdrop");
+        menuBackdrop.style.display = "block";
+        menuBackdrop.style.zIndex = "1";
+    });
+
+    $('#menu-backdrop').on("click", function () {
+        var menuModal = document.querySelector("#modal-bar");
+        var menuBackdrop = document.querySelector("#menu-backdrop");
+        menuModal.style.display = "none";
+        menuBackdrop.style.display = "none";
+    });
 });
