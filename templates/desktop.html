@@ -26,8 +26,21 @@
         function changeWallpaper() {
             var body = document.getElementsByTagName('body')[0];
             var images = ["Follow.jpg", "Azul.jpg", "Red moon desert.jpg", "Stonehenge.jpg", "Wind.jpg", "xp.jpg"]
-            body.style.backgroundImage = 'url("../static/styles/images/background/' + images[Math.floor(Math.random() * images.length)];
-        }
+            var currImage = document.querySelector('body').style.backgroundImage.split("/images/background/")[1];
+            if (currImage !== "" && currImage !== undefined) {
+                var finalCurrImage = currImage.split('")')[0]
+                
+                var index = images.indexOf(finalCurrImage);
+                if (index !== images.length - 1) {
+                    body.style.backgroundImage = 'url("../static/styles/images/background/' + images[images.indexOf(finalCurrImage) + 1];
+                } else {
+                    body.style.backgroundImage = 'url("../static/styles/images/background/' + images[0];
+                }
+                
+            } else {
+                body.style.backgroundImage = 'url("../static/styles/images/background/' + images[0];
+            }
+        }   
 
         function playMario() {
             document.getElementById("mario").style.display = "block";
@@ -323,9 +336,9 @@
                                     openImageModal
                                 {% endif %}
                                 " data-image-index="{{ loop.index0 }}" data-space-id="{{ space['id'] }}">
-                                    {% if "liminalxp.github.io" not in media and ".mp3" not in media %}
+                                {% if ".mp4" not in media and ".mp3" not in media %}
                                     <img src="{{ media }}" class="icon mt-4" onclick="playSound('click');"></a>
-                                {% elif "liminalxp.github.io" in media %}
+                                {% elif ".mp4" in media %}
                                 <img src="../static/styles/images/media.png" class="icon mt-4 trigger-modal-video" id="trigger-modal-video-{{ space['id'] }}-index-{{ loop.index0 }}"
                                     onclick="playSound('click');"></a>
                                 {% elif ".mp3" in media %}
@@ -337,7 +350,7 @@
                                     data-bs-custom-class="custom-tooltip"
                                     data-bs-toggle="tooltip" data-bs-title="
 
-                                    {% if "liminalxp.github.io" not in media and ".mp3" not in media %}
+                                    {% if ".mp4" not in media and ".mp3" not in media %}
                                     {{ random_name }}.png
                                     {% elif ".mp3" in media %}
                                     {{ media }}.mp3
@@ -348,7 +361,7 @@
                                     " data-bs-placement="bottom"
                                     {% endif %}
                                     >
-                                    {% if "liminalxp.github.io" not in media and ".mp3" not in media %}
+                                    {% if ".mp4" not in media and ".mp3" not in media %}
                                     {% if random_name|length > 4 %}
                                     {{ random_name[:4] }}..
                                     {% else %}
@@ -427,7 +440,7 @@
                         <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
                             <img src="../static/styles/images/setup_wm.exe_14_71-6.png"
                                 style="width: 6%; margin-left: -0.8rem; margin-bottom: 0.3rem;">
-                            {% if "liminalxp.github.io" not in image %}
+                            {% if ".mp4" not in image %}
                             {{ loop.index }}.png - Windows Picture and Fax Viewer
                             {% else %}
                             {{ loop.index }}.mp4 - Windows Media Player
@@ -439,7 +452,7 @@
                     <div class="modal-body no-select" id="modal-body">
                         <div class="row">
                             <div class="col col-md-12">
-                                {% if "liminalxp.github.io" not in image %}
+                                {% if ".mp4" not in image %}
                                 <img class="liminal-image" src="{{ image }}"
                                     style="max-width: 100%; max-height: 100%;" />
                                 {% else %}
