@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var rand = randomIntFromInterval(1, 2);
             switch (rand) {
                 case 1:
-                    modal.style.left = (mouseX - 20) + "px";
+                    modal.style.left = (mouseX + 20) + "px";
                     modal.style.top = (mouseY - 20) + "px";
                     break;
                 case 2:

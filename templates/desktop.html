@@ -174,7 +174,7 @@
             </div>
         </div>
 
-        <div class="modal" id="explorer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog"
+        <div class="modal" id="explorer" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" ""
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content no-select">
@@ -202,7 +202,7 @@
                             <button type="button" class="btn option openHelpModal"
                                 onclick="playSound('click')">Help</button>
                         </div>
-                        <div class="row">
+                        <div class="row folderModal" style="margin-top: -1rem;">
                             {% for space in spaces %}
                             <div class="col col-md-3 no-select">
                                 <a class="openSpaceModal" data-space-id="{{ space['id'] }}"><img
@@ -323,7 +323,7 @@
                             <button type="button" class="btn option openErrorModal"
                                 onclick="playSound('click'); playSound('error')">Help</button>
                         </div>
-                        <div class="row">
+                        <div class="row folderModal">
                             <div class="col col-md-3 no-select">
                                 <a class="openDescriptionModal" data-space-id="{{ space['id'] }}"><img
                                         src="{{ url_for('static', filename='styles/images/NOTEPAD.EXE_14_2-6.png') }}"
@@ -451,7 +451,7 @@
                             onclick="playSound('click'); stopVideo(`{{ space['id'] }}-{{ space['media'].index(image) }}`)">X</button>
                     </div>
                     <div class="modal-body no-select" id="modal-body">
-                        <div class="row">
+                        <div class="row folderModal">
                             <div class="col col-md-12">
                                 {% if ".mp4" not in image %}
                                 <img class="liminal-image" src="{{ image }}"
@@ -563,7 +563,7 @@
             toast.show();
         }
     </script>
-    <div class="modal" id="modal-songs" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal" id="modal-songs" data-bs-backdrop="static" data-bs-keyboard="false" "">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header no-select">
@@ -588,7 +588,7 @@
                         <button type="button" class="btn option openErrorModal"
                             onclick="playSound('click'); playSound('error')">Help</button>
                     </div>
-                    <div class="row">
+                    <div class="row folderModal">
                         {% for song in songs %}
                         <div class="col col-md-3 no-select">
                             <a class="playSong" data-index="{{ loop.index0 }}" data-name="{{ song }}"><img

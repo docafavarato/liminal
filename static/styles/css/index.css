@@ -16,6 +16,8 @@ body {
     height: 100vh !important;
     z-index: -10;
     padding: 0px;
+    width: 100vw !important;
+    box-sizing: border-box !important;
 }
 
 .containment {
@@ -46,12 +48,12 @@ button {
 }
 
 .barradiv {
-    position: fixed;
+    position: fixed !important;
     bottom: 0;
 }
 
 .barra {
-    position: fixed;
+    position: fixed !important;
     bottom: -2px;
     width: 150% !important;
     margin-left: -1rem !important;
@@ -199,10 +201,10 @@ a {
 #options {
     margin-top: -2.3rem;
     margin-left: -1rem;
-    background-color: rgb(202, 201, 201) !important;
+    background-color: #EDE9D2 !important;
     border-radius: 0px !important;
     width: 70%;
-    padding: 5x;
+    border-bottom: 1px solid rgb(199, 197, 197);
 }
 
 .option {
@@ -216,7 +218,7 @@ a {
 }
 
 .option:hover {
-    background-color: rgb(20, 20, 248) !important;
+    background-color: #1660E8 !important;
     color: white !important;
 }
 
@@ -323,6 +325,7 @@ a {
 .custom-tooltip {
     border-radius: 5px;
     border: 1px solid black;
+    z-index: 99999999999999999 !important;
 }
 
 .toast {
@@ -536,10 +539,6 @@ a {
 
 
 /* MODAIS MULTIPLOS */
-.modal-open {
-    width: 1px !important;
-}
-
 .modal-backdrop {
     display: none !important;
 }
@@ -557,4 +556,8 @@ a {
     transform: translate(-50%, -50%);
     width: 50%;
     height: auto;
+}
+
+.folderModal {
+    margin-top: -1rem !important;
 }
