@@ -293,7 +293,7 @@
                 document.querySelectorAll(".liminal-song").forEach(liminal_song => {
                     liminal_song.pause();
                     liminal_song.currentTime = 0;
-                })
+                });
             }
         </script>
         {% for space in spaces %}
@@ -501,6 +501,8 @@
             document.getElementById('backgroundMusic').volume = 0.5;
             $('.space-modal').on('shown.bs.modal', function () {
                 if ($('#toggle-music').hasClass('active')) {
+                    stopSpaceSound();
+
                     setTimeout(function () {
                         playRandomMusic();
                     }, 100);
