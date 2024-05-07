@@ -433,8 +433,8 @@
         </script>
         {% for image in space['media'] %}
         {% if not ".mp3" in image %}
-        <div class="modal" id="modal-image-{{ space['id'] }}-{{ space['media'].index(image) }}"
-            data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal image-modal" id="modal-image-{{ space['id'] }}-{{ space['media'].index(image) }}"
+            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header no-select">

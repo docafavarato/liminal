@@ -505,7 +505,7 @@ a {
     overflow-y: initial !important
 }
 .modal-body-scrollable {
-    max-height: 80vh !important;
+    max-height: 90vh !important;
     overflow-y: auto !important;
 }
 
@@ -534,7 +534,7 @@ a {
     resize: both !important;
     min-height: 20vh;
     min-width: 350px !important;
-    max-height: 80vh !important;
+    max-height: 90vh !important;
 }
 
 
