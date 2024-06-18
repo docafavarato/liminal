@@ -19,6 +19,7 @@
     <script src="{{ url_for('static', filename='scripts/erro.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/relogio.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
 </head>
 
 <body>
@@ -95,6 +96,11 @@
                     class="icon mt-4" onclick="playSound('click'); playMario();" id="change-wallpaper">
                 <div class="songs icon-text no-select">clickme.exe</div>
             </div>
+            <div class="group">
+                <img src="{{ url_for('static', filename='styles/images/icwconn1.exe_14_201-2.png') }}"
+                    class="icon mt-4" onclick="playSound('click');" data-bs-toggle="modal" data-bs-target="#modal-forum">
+                <div class="songs icon-text no-select">Internet Explorer.exe</div>
+            </div>
         </div>
         <div class="mario-container">
             <video style="display: none;" id="mario">
@@ -132,6 +138,107 @@
             });
         </script>
         <!-- Modal -->
+
+        <div class="modal" id="modal-forum" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-forum modal-dialog-scrollable">
+                <div class="modal-content modal-content-forum">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 no-select" id="staticBackdropLabel">
+                            <img src="../static/styles/images/icwconn1.exe_14_201-2.png" width="25" style="margin-left: -.5rem; margin-bottom: .2rem;">
+                            Internet Explorer
+                        </h1>
+                        <button class="close-btn no-select" data-bs-dismiss="modal" aria-label="Close"
+                            onclick="playSound('click')">X</button>
+                    </div>
+                    <div style="display: flex; flex-direction: column; background-color: #EDE9D1; color: grey; border: 1px solid grey">
+                        <div class="browser-options" style="height: 2.5rem; border-bottom: 1px solid grey; display: flex; flex-direction: row; width: 100%; align-items: center; font-size: 14px;">
+                            <div style="margin-left: .5rem;">
+                                <img src="../static/styles/images/setaesquerda.png" width="30" height="30">
+                                <span>Back</span>
+                            </div>
+                            <div style="margin-left: 1rem;">
+                                <img src="../static/styles/images/setadireita.png">
+                            </div>
+                            <div style="margin-left: 1rem; margin-right: .5rem;">
+                                <img src="../static/styles/images/paper.png">
+                                <img src="../static/styles/images/paper2.png">
+                                <img src="../static/styles/images/house.png">
+                            </div>
+                            <div class="vr"></div>
+                            <div style="margin-left: .5rem;">
+                                <img src="../static/styles/images/lupa.png" width="25">
+                                <span style="color: black;">Search</span>
+                            </div>
+                            <div style="margin-left: .5rem; margin-right: .5rem;">
+                                <img src="../static/styles/images/download (6).png" width="25">
+                                <span style="color: black;">Favorites</span>
+                                <img src="../static/styles/images/download (7).png" width="35">
+                            </div>
+                            <div class="vr"></div>
+                            <div style="margin-left: .5rem;">
+                                <img src="../static/styles/images/download (8).png">
+                                <img src="../static/styles/images/download (9).png">
+                                <img src="../static/styles/images/download (10).png">
+                                <img src="../static/styles/images/download (11).png">
+                            </div>
+                        </div>
+                        <div class="url-input" style="display: flex; flex-direction: row; height: 1.4rem; width: 100%;">
+                            <span style="margin-right: .5rem; margin-left: .5rem; font-size: 14px;">Address</span>
+                            <input type="text" placeholder="URL" value="https://www.liminal.chan" style="width: 100%; height: 1.4rem; font-size: 14px;">
+                            <button type="submit" style="width: 4rem; background-color: #EDE9D1; border: none; border-right: 1px solid grey; line-height: .5rem;">
+                                <img src="../static/styles/images/netshell.dll_14_1909-7.png" width="16">
+                                <span>Go</span>
+                            </button>
+                            <span style="margin-right: .5rem; margin-left: .5rem; font-size: 14px;">Links</span>
+                        </div>
+                    </div>
+                    <div class="modal-body no-select" style="background-color: #EEF2FF;" id="modal-body-forum">
+                        <div class="modal-forum-main-content" style="height: 30rem;">
+                            <div class="forum-top-header" style="position: relative; display: flex; justify-content: center; align-items: center; width: 100%;">
+                                <div class="forum-top-header-banner" style="display: flex; justify-content: center; align-items: center; width: 100%;">
+                                    <img src="../static/styles/images/banner.png" style="width: 40%;">
+                                </div>
+                                <!--<div class="forum-top-header-login" style="position: absolute; right: 10px; top: 0px; display: flex;">
+                                    <a hx-get="" hx-trigger="click" hx-target=".modal-forum-principal" hx-swap="innerHTML">Login</a>
+                                    <a href="" style="margin-left: 10px;">Register</a>
+                                </div>-->
+                            </div>
+                            
+                            <div class="modal-forum-principal">
+                                <div class="forum-posts" style="margin-top: 1rem;">
+                                    <div class="boards" style="align-items: center; display: flex; flex-direction: column;">
+                                        <div class="create-boards" style="margin-bottom: 1rem;">
+                                            <button type="button" data-bs-toggle="collapse" data-bs-target="#create-board-collapse" aria-expanded="false" aria-controls="create-board-collapse" style="width: 8rem;">Create a board</button>
+                                        </div>
+                                        <div class="collapse" id="create-board-collapse" style="margin-top: 1rem; margin-bottom: 1rem;">
+                                            <form style="display: flex; flex-direction: column;" hx-post="{{ url_for('create_board') }}"
+                                            hx-target=".forum-posts" hx-swap="innerHTML" hx-trigger="submit">
+                                                <div class="row mb-3">
+                                                    <label class="col-sm-10">Name</label>
+                                                    <div class="col-sm-10">
+                                                        <textarea style="max-height: 200px; max-width: 100%; resize: both;" name="name"></textarea>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" style="width: 10rem;">Create</button>
+                                            </form>
+                                        </div>
+                                        <h3>Boards</h3>
+                                        {% for board in boards %}
+                                            <div class="board">
+                                                <span class="board-name" style="color: blue; text-decoration: underline;"
+                                                hx-get="{{ url_for('get_board', boardId=board.id) }}" hx-target=".forum-posts" hx-swap="innerHTML">/{{ board.name }}/
+                                                </span>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -664,8 +771,8 @@
                 <div class="modal-body no-select" id="modal-body">
                     <div class="menu-1 menu">
                         <div class="row">
-                            <div class="col col-md-12 no-select mb-2 menu-item openErrorModal2"
-                                onclick="playSound('click'); playSound('error')">
+                            <div class="col col-md-12 no-select mb-2 menu-item"
+                                onclick="playSound('click');" data-bs-toggle="modal" data-bs-target="#modal-forum">
                                 <img src="../static/styles/images/icwconn1.exe_14_201-2.png" style="width: 12%;">
                                 <strong>Internet</strong>
                             </div>

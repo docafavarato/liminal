@@ -1,0 +1,25 @@
+<div class="boards" style="align-items: center; display: flex; flex-direction: column;">
+    <div class="create-boards" style="margin-bottom: 1rem;">
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#create-board-collapse" aria-expanded="false" aria-controls="create-board-collapse" style="width: 8rem;">Create a board</button>
+    </div>
+    <div class="collapse" id="create-board-collapse" style="margin-top: 1rem; margin-bottom: 1rem;">
+        <form style="display: flex; flex-direction: column;" hx-post="{{ url_for('create_board') }}"
+        hx-target=".forum-posts" hx-swap="innerHTML" hx-trigger="submit">
+            <div class="row mb-3">
+                <label class="col-sm-10">Name</label>
+                <div class="col-sm-10">
+                    <textarea style="max-height: 200px; max-width: 100%; resize: both;" name="name"></textarea>
+                </div>
+            </div>
+            <button type="submit" style="width: 10rem;">Create</button>
+        </form>
+    </div>
+    <h3>Boards</h3>
+    {% for board in boards %}
+        <div class="board">
+            <span class="board-name" style="color: blue; text-decoration: underline;"
+            hx-get="{{ url_for('get_board', boardId=board.id) }}" hx-target=".forum-posts" hx-swap="innerHTML">/{{ board.name }}/
+            </span>
+        </div>
+    {% endfor %}
+</div>

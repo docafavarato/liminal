@@ -1,0 +1,96 @@
+
+    <div class="create-post" style="margin-bottom: 1rem;">
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#post-collapse" aria-expanded="false" aria-controls="post-collapse" style="width: 8rem;">Create a post</button>
+    </div>
+    <div class="collapse" id="post-collapse" style="margin-top: 1rem; margin-bottom: 1rem;">
+        <form style="display: flex; flex-direction: column;" hx-post="{{ url_for('create_post', boardId=board.id) }}"
+        hx-target=".forum-posts" hx-swap="innerHTML" hx-trigger="submit" hx-encoding="multipart/form-data">
+            <div class="row mb-3">
+                <label class="col-sm-1">Comment</label>
+                <div class="col-sm-10">
+                    <textarea style="max-height: 200px; max-width: 100%; resize: both;" name="comment"></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-1">Image</label>
+                <div class="col-sm-10">
+                    <input type="file" name="post-image" accept="image/png, image/jpg, image/jpeg">
+                </div>
+            </div>
+            <button type="submit" style="width: 10rem;">Post</button>
+        </form>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <h3>/{{ board.name }}/</h3>
+        <span>Created at {{ board.createdAt }} by <b>Anonymous</b></span>
+        <span style="color: blue; text-decoration: underline;" hx-get="{{ url_for('get_boards_list') }}" hx-target=".forum-posts" hx-swap="innerHTML">All boards</span>
+    </div>
+    {% for post in posts %}
+        <span class="minimizeThread" data-bs-toggle="collapse" data-bs-target="#post-collapse-{{ post.id }}" aria-expanded="false" aria-controls="post-collapse" type="button">
+            <span>-</span>
+        </span>
+        <div class="collapse show" id="post-collapse-{{ post.id }}">
+            <div class="forum-post" id="post-{{ post.id }}" style="display: flex; flex-direction: row;">
+                {% if post.imgUrl %}
+                <div class="forum-post-image-container" style="display: flex; flex-direction: column;">
+                    <span>File: <a href="{{ url_for('static', filename='uploads/post-images/' + post.imgUrl) }}" target="_blank">{{ post.imgUrl }}</a></span>
+                    <img src="{{ url_for('static', filename='uploads/post-images/' + post.imgUrl) }}" class="forum-post-image">
+                </div>
+                {% endif %}
+                <div class="forum-post-texts" style="display: flex; flex-direction: column; margin-left: 1rem; margin-top: 1.2rem;">
+                    <div class="forum-post-info" style="display: flex; flex-direction: row;">
+                        <p class="forum-post-author"><b>Anonymous</b></p>
+                        <p class="forum-post-created-at" style="margin-left: .5rem;">{{ post.createdAt }}</p>
+                        <div class="dropdown" style="margin-left: .5rem; text-decoration: underline; color: blue;">
+                            <span class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">[Reply]</span>
+                            <ul class="dropdown-menu">
+                                <form style="display: flex; flex-direction: column; margin-left: .6rem;" hx-post="{{ url_for('create_reply', postId=post.id, boardId=board.id) }}"
+                                hx-target=".forum-posts" hx-swap="innerHTML" hx-trigger="submit" hx-encoding="multipart/form-data">
+                                    <div class="row mb-3">
+                                        <label class="col-sm-12">Comment</label>
+                                        <div class="col-sm-10">
+                                            <textarea style="max-height: 150px; max-width: 100%; resize: both;" name="comment"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-12">Image</label>
+                                        <div class="col-sm-10">
+                                            <input type="file" name="reply-image" accept="image/png, image/jpg, image/jpeg">
+                                        </div>
+                                    </div>
+                                    <button type="submit" style="width: 10rem;">Reply</button>
+                                </form>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="forum-post-content">{{ post.content }}</p>
+                </div>
+            </div>
+            {% if post.replies %}
+                <span>{{ post.replies|length }} replies</span>
+                {% for reply in post.replies %}
+                <span class="minimizeThread" style="margin-bottom: .5rem; background-color: rgb(228, 91, 91) !important;" data-bs-toggle="collapse" data-bs-target="#reply-collapse-{{ reply.id }}" aria-expanded="false" aria-controls="reply-collapse" type="button">
+                    <span>-</span>
+                </span>
+                <div class="collapse show" id="reply-collapse-{{ reply.id }}">
+                    <div class="reply" style="display: flex; flex-direction: row; background-color: #D6DAF0; margin-bottom: .3rem; border-right: 1px solid #B7C5D9; border-bottom: 1px solid #B7C5D9; width: fit-content;">
+                        <div style="display: flex; flex-direction: row; margin-bottom: 1rem; margin-left: .5rem;">
+                            <div class="" style="display: flex; flex-direction: column;">
+                                <span>File: <a href="{{ url_for('static', filename='uploads/post-images/' + reply.imgUrl) }}" target="_blank">{{ reply.imgUrl }}</a></span>
+                                <img src="{{ url_for('static', filename='uploads/post-images/' + reply.imgUrl) }}" class="forum-post-reply-image">
+                            </div>
+                            <div class="reply-text-content" style="margin-top: 1rem; margin-left: .5rem; margin-right: 1rem;">
+                                <div class="post-reply-info" style="display: flex; flex-direction: row;">
+                                    <p class="forum-post-reply-author" style="margin-left: .5rem;"><b>Anonymous</b></p>
+                                    <p class="forum-post-reply-created-at" style="margin-left: .5rem;">{{ reply.createdAt }}</p>
+                                </div>
+                                <span style="margin-left: .5rem;">{{ reply.content }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <hr>
+    {% endfor %}

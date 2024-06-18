@@ -561,3 +561,56 @@ a {
 .folderModal {
     margin-top: -1rem !important;
 }
+
+.modal-dialog-forum {
+    max-width: 70rem !important;
+    width: 70rem !important;
+}
+
+.modal-content-forum {
+    max-width: 70rem !important;
+    width: 70rem !important;
+}
+
+.browser-options img {
+    border: 1px solid #EDE9D1;
+    border-radius: 5px;
+    cursor: url("../images/pointer.cur"), auto;
+}
+
+.browser-options img:hover {
+    border: 1px solid grey;
+}
+
+.forum-post-image {
+    max-width: 15rem;
+}
+
+.forum-post-reply-image {
+    max-width: 10rem;
+}
+
+.forum-post {
+    margin-bottom: 2rem;
+}
+
+.minimizeThread {
+    border: 1px solid #0F0C5D;
+    border-radius: 2px;
+    color: white;
+    background-color: #8993CD;
+    height: 15px;
+    width: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.minimizeThread span {
+    margin-bottom: 3px;
+}
+
+.board-name:hover {
+    color: red !important;
+}

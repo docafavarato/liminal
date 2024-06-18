@@ -96,6 +96,13 @@ $("textarea").each(function () {
 
 
 $(document).ready(function () {
+
+    $('.minimizeThread span').click(function(){ 
+        $(this).text(function(i,old){
+            return old=='+' ?  '-' : '+';
+        });
+    });
+
     $('#modal-bar').on('shown.bs.modal', function (e) {
         var menuBackdrop = document.querySelector("#menu-backdrop");
         menuBackdrop.style.display = "block";
