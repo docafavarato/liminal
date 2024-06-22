@@ -6,6 +6,7 @@ import json
 import random
 import string
 from apiservice import Posts, Replies, Boards
+from datetime import datetime
 
 postApi = Posts()
 replyApi = Replies()
@@ -27,6 +28,11 @@ def randomString(range1, range2):
     
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def iso_to_datetime(iso_string):
+    return datetime.fromisoformat(iso_string).strftime("%m/%d/%Y %H:%M:%S")
+
+app.jinja_env.filters['iso_to_datetime'] = iso_to_datetime
 
 @app.route("/", methods=["GET"])
 def index():
